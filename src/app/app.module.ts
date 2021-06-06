@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ClientComponent} from "./client/client.component";
 import {AgentModule} from "./agent/agent.module";
+import {DataTablesModule} from "angular-datatables";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {AgentModule} from "./agent/agent.module";
     NotificationModule,
     FormsModule,
     BrowserAnimationsModule,
-    AgentModule
+    AgentModule,
+    DataTablesModule
   ],
   providers: [NotificationService, AuthenticationGuard ,AuthenticationService, UserService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
   bootstrap: [AppComponent],
