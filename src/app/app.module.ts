@@ -13,15 +13,15 @@ import { NotificationService } from './services/notification.service';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ClientComponent } from './client/client.component';
-import { AgentComponent } from './agent/agent.component';
+import {ClientComponent} from "./client/client.component";
+import {AgentModule} from "./agent/agent.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ClientComponent,
-    AgentComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,6 +30,7 @@ import { AgentComponent } from './agent/agent.component';
     NotificationModule,
     FormsModule,
     BrowserAnimationsModule,
+    AgentModule
   ],
   providers: [NotificationService, AuthenticationGuard ,AuthenticationService, UserService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
   bootstrap: [AppComponent],

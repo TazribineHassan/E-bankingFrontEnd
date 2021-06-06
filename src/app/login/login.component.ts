@@ -37,11 +37,11 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.authenticationService.addUserToLocalCache(response.body);
           this.router.navigateByUrl('/client/home');
           this.showLoading = false;
-      }, 
+      },
       (errorResponse: HttpErrorResponse) =>{
         this.sendErrorNotification(NotificationType.ERROR, errorResponse.error.message);
         this.showLoading = false;
-      } 
+      }
       )
     );
   }
@@ -55,9 +55,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() : void {
-    this.subscriptions.forEach(sub => sub.unsubscribe()); 
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 
 }
- 
