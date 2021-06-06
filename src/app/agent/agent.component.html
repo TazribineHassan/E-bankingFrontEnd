@@ -17,7 +17,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" routerLink="/agent">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Tableau de bord</span></a>
     </li>
@@ -26,19 +26,32 @@
     <hr class="sidebar-divider">
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed"  aria-expanded="true" aria-controls="collapseTwo" routerLink="/clients">
+      <a class="nav-link collapsed"  aria-expanded="true" aria-controls="collapseTwo" routerLink="./clients">
         <i class="fas fa-users"></i>
         <span> Clients</span>
       </a>
     </li>
-
+    <li class="nav-item">
+      <a class="nav-link collapsed"  aria-expanded="true" aria-controls="collapseUtilities" routerLink="./add-client">
+        <i class="fas fa-user"></i>
+        <span> Ajouter un client</span>
+      </a>
+    </li>
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed"  aria-expanded="true" aria-controls="collapseUtilities">
+      <a class="nav-link collapsed"  aria-expanded="true" routerLink="./transactions" aria-controls="collapseUtilities">
         <i class="fas fa-exchange-alt"></i>
         <span> Transactions</span>
       </a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed"  aria-expanded="true" routerLink="./verse" aria-controls="collapseUtilities">
+        <i class="fas fa-exchange-alt"></i>
+        <span> Effectuer un versement</span>
+      </a>
+    </li>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider">

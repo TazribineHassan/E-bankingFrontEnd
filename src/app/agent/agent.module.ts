@@ -4,6 +4,9 @@ import { DashbordComponent } from './dashbord/dashbord.component';
 import {AgentComponent} from "./agent.component";
 import {RouterModule} from "@angular/router";
 import { ClientsComponent } from './clients/clients.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { AjoutClientsComponent } from './ajout-clients/ajout-clients.component';
+import { VerserComponent } from './verser/verser.component';
 
 
 
@@ -12,6 +15,9 @@ import { ClientsComponent } from './clients/clients.component';
     DashbordComponent,
     AgentComponent,
     ClientsComponent,
+    TransactionsComponent,
+    AjoutClientsComponent,
+    VerserComponent,
   ],
   imports: [
     CommonModule,
