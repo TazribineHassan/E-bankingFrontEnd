@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ajout-clients.component.css']
 })
 export class AjoutClientsComponent implements OnInit {
+  optionValue: any;
 
   constructor() { }
 
