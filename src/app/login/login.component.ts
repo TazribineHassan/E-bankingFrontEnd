@@ -21,7 +21,15 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if(this.authenticationService.isLoggedIn()){
-      this.router.navigateByUrl('/user/home');
+      if(this.authenticationService.getUserFromLocalCache().roles == "ROLE_ADMIN"){
+        this.router.navigateByUrl('/client/home');
+      }
+      else if(this.authenticationService.getUserFromLocalCache().roles == "ROLE_AGENT"){
+        this.router.navigateByUrl('/agent/home');
+      }
+      else{
+        this.sendErrorNotification(NotificationType.ERROR, "You don't have the permission");
+      }
     }
     else{
       this.router.navigateByUrl('/login');
@@ -35,7 +43,15 @@ export class LoginComponent implements OnInit, OnDestroy {
           const token = response.headers.get(HeaderType.JWT_TOKEN);
           this.authenticationService.saveToken(token);
           this.authenticationService.addUserToLocalCache(response.body);
-          this.router.navigateByUrl('/client/home');
+          if(this.authenticationService.getUserFromLocalCache().roles == "ROLE_ADMIN"){
+            this.router.navigateByUrl('/client/home');
+          }
+          else if(this.authenticationService.getUserFromLocalCache().roles == "ROLE_AGENT"){
+            this.router.navigateByUrl('/agent/home');
+          }
+          else{
+            this.sendErrorNotification(NotificationType.ERROR, "You don't have the permission");
+          }
           this.showLoading = false;
       }, 
       (errorResponse: HttpErrorResponse) =>{

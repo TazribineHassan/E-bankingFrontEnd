@@ -35,7 +35,7 @@ export class AuthenticationService {
     localStorage.setItem('user', JSON.stringify(user));
   }
  
-  getUserFromLocalCache(user:User): User {
+  getUserFromLocalCache(): User {
 
     return JSON.parse(localStorage["user"]);
   }
@@ -49,8 +49,7 @@ export class AuthenticationService {
     return this.token;
   }
 
-  isLoggedIn(): boolean {
-
+  isLoggedIn(): boolean | any{
     this.loadToken();
     if(this.token != null && this.token !==''){
       if(this.jwtHelper.decodeToken(this.token).sub != null || ''){
@@ -59,9 +58,10 @@ export class AuthenticationService {
           return true;
         }
       }
+    }else{
+      this.logout();
+      return false;
     }
-    this.logout();
-    return false;
   }
 
 }
