@@ -8,6 +8,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { AjoutClientsComponent } from './ajout-clients/ajout-clients.component';
 import { VerserComponent } from './verser/verser.component';
 import {DataTablesModule} from "angular-datatables";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -23,7 +24,8 @@ import {DataTablesModule} from "angular-datatables";
   imports: [
     CommonModule,
     RouterModule,
-    DataTablesModule
+    DataTablesModule,
+    FormsModule
   ]
 })
 export class AgentModule { }

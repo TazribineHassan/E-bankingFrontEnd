@@ -14,10 +14,9 @@
       <img src="assets/img/undraw_profile.svg" style="width: 160px; align-self: center;">
       <div> Nom Prenom</div>
       <div>N° Agent: gfdgdf</div>
-    </div>
-
+    </div><br>
     <!-- Divider -->
-
+    <hr class="sidebar-divider">
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
@@ -26,8 +25,7 @@
         <span>Tableau de bord</span></a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
       <a class="nav-link collapsed"  aria-expanded="true" aria-controls="collapseTwo" routerLink="./clients">
@@ -51,7 +49,7 @@
 
     <li class="nav-item">
       <a class="nav-link collapsed"  aria-expanded="true" routerLink="./verse" aria-controls="collapseUtilities">
-        <i class="fas fa-exchange-alt"></i>
+        <i class="fas fa-long-arrow-alt-right"></i>
         <span> Effectuer un versement</span>
       </a>
     </li>
@@ -90,12 +88,14 @@
       </form>
     </nav>
 
-  <router-outlet></router-outlet>
+  <router-outlet>
+
+  </router-outlet>
 
   <!-- Content Wrapper -->
 
     <!-- Footer -->
-    <footer class="sticky-footer bg-white">
+    <footer class="sticky-footer bg-white " >
       <div class="container my-auto">
         <div class="copyright text-center my-auto">
           <span>Copyright &copy; Your Website 2021</span>
@@ -108,7 +108,7 @@
   <!-- End of Content Wrapper -->
 
   <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
+  <a class="scroll-to-top rounded"  href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
 
