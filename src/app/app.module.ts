@@ -16,6 +16,7 @@ import { ClientComponent } from './client/client.component';
 import { AgentComponent } from './agent/agent.component';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import {AgentModule} from "./agent/agent.module";
+import {DataTablesModule} from "angular-datatables";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {AgentModule} from "./agent/agent.module";
     NotificationModule,
     FormsModule,
     BrowserAnimationsModule,
-    AgentModule
+    AgentModule,
+    DataTablesModule
   ],
   providers: [AuthenticationGuard, NotificationService, AuthenticationService, UserService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
   bootstrap: [AppComponent],

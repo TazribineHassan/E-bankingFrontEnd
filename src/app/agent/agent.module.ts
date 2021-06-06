@@ -7,6 +7,7 @@ import { ClientsComponent } from './clients/clients.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { AjoutClientsComponent } from './ajout-clients/ajout-clients.component';
 import { VerserComponent } from './verser/verser.component';
+import {DataTablesModule} from "angular-datatables";
 
 
 
@@ -21,7 +22,8 @@ import { VerserComponent } from './verser/verser.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    DataTablesModule
   ]
 })
 export class AgentModule { }

@@ -7,7 +7,7 @@ import {DashbordComponent} from "./agent/dashbord/dashbord.component";
 import {ClientsComponent} from "./agent/clients/clients.component";
 import {AjoutClientsComponent} from "./agent/ajout-clients/ajout-clients.component";
 import {VerserComponent} from "./agent/verser/verser.component";
-import {TransactionsComponent} from "./agent/transactions/transactions.component";
+mport {TransactionsComponent} from "./agent/transactions/transactions.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,7 +18,7 @@ const routes: Routes = [
     {path:'transactions',component:TransactionsComponent},
     {path:'add-client',component:AjoutClientsComponent},
     {path:'verse',component:VerserComponent}
-  ]},
+   ]},
   { path: '', redirectTo: '/login', pathMatch:'full' }
 ];
 
