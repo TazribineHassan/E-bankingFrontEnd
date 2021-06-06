@@ -53,11 +53,11 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.sendErrorNotification(NotificationType.ERROR, "You don't have the permission");
           }
           this.showLoading = false;
-      }, 
+      },
       (errorResponse: HttpErrorResponse) =>{
         this.sendErrorNotification(NotificationType.ERROR, errorResponse.error.message);
         this.showLoading = false;
-      } 
+      }
       )
     );
   }
@@ -71,9 +71,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() : void {
-    this.subscriptions.forEach(sub => sub.unsubscribe()); 
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 
 }
- 

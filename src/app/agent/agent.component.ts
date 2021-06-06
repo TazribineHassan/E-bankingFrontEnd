@@ -14,7 +14,7 @@ export class AgentComponent implements OnInit {
   constructor(private authenticationService: AuthenticationService, private router : Router, private notifier: NotificationService) { }
 
   ngOnInit(): void {
-    if(this.authenticationService.isLoggedIn() && this.authenticationService.getUserFromLocalCache().roles == "ROLE_AGENT"){
+    if(this.authenticationService.isLoggedIn() && this.authenticationService.getUserFromLocalCache().roles == "ROLE_ADMIN"){
       this.router.navigateByUrl('/agent/home');
     }
     else{
