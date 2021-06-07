@@ -18,7 +18,8 @@ const routes: Routes = [
     { path: 'clients', component: ClientsComponent },
     { path: 'transactions', component: TransactionsComponent },
     { path: 'add-client', component: AjoutClientsComponent },
-    { path: 'verse', component: VerserComponent }
+    { path: 'verse', component: VerserComponent },
+    { path: 'profil', component: ProfilComponent }
     ]},
   { path: '', redirectTo: '/login', pathMatch:'full' }
 ];
