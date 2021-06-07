@@ -47,8 +47,9 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
     <div class="modal-body">
-      <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+
         <div class="form-group row">
           <label class="col-md-4 col-form-label" for="cin-input">CIN du client<span style="color: red">*</span></label>
           <div class="col-md-8">
@@ -93,13 +94,13 @@
             <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date de naissance">
           </div>
         </div>
-      </form>
 
     </div>
     <div class="modal-footer">
       <button type="button" class="btn bg-primary text-white">Modifier</button>
       <button type="button" class="btn btn-outline-dark " (click)="modal.close('Save click')">Quitter</button>
     </div>
+    </form>
   </ng-template>
   <ng-template #delete let-modal>
     <div class="modal-header">
