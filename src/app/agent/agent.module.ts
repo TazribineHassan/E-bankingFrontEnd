@@ -9,6 +9,7 @@ import { AjoutClientsComponent } from './ajout-clients/ajout-clients.component';
 import { VerserComponent } from './verser/verser.component';
 import {DataTablesModule} from "angular-datatables";
 import {FormsModule} from "@angular/forms";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 
@@ -25,7 +26,8 @@ import {FormsModule} from "@angular/forms";
     CommonModule,
     RouterModule,
     DataTablesModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ]
 })
 export class AgentModule { }

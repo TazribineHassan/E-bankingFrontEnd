@@ -16,6 +16,7 @@
           <th>N° de compte</th>
           <th>Solde</th>
           <th></th>
+          <th></th>
           </thead>
 
           <tbody>
@@ -27,8 +28,10 @@
             <td>55637668908</td>
             <td>$320,800</td>
             <td>
-              <a><i class="fa fa-edit"></i></a>
-              <a style="margin-left: 10px"><i class="fa fa-trash"></i></a>
+              <a><i class="fa fa-edit btn" (click)="open(content)"></i></a>
+            </td>
+            <td>
+              <a ><i class="fa fa-trash btn"></i></a>
             </td>
           </tr>
 
@@ -37,5 +40,64 @@
       </div>
     </div>
   </div>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Modifier les informations du client</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label" for="cin-input">CIN du client<span style="color: red">*</span></label>
+          <div class="col-md-8">
+            <input type="text" id="cin-input" name="cin-input" class="form-control" required>
 
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <label class="col-form-label" for="nom-input">Nom du client<span style="color: red">*</span></label>
+          </div>
+          <div class="form-group col-sm-4">
+            <input type="text"  id="nom-input" name="nom-input" class="form-control" placeholder="Nom" required>
+          </div>
+          <div class="form-group col-sm-4">
+            <input type="text"  id="prenom-input" name="email-input" class="form-control" placeholder="Prenom" required >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label" for="email-input">Email<span style="color: red">*</span></label>
+          <div class="col-md-8">
+            <input type="email"  id="email-input" name="email-input" class="form-control"  autocomplete="email" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label" for="tel-input">Telephone<span style="color: red">*</span></label>
+          <div class="col-md-8">
+            <input type="text" id="tel-input" name="tel-input" class="form-control" placeholder="Telephone" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label" for="sold-input">Solde<span style="color: red">*</span></label>
+          <div class="col-md-8">
+            <input type="text" id="sold-input" name="sold-input" class="form-control" placeholder="Solde" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label" for="date-input">Date de naissance</label>
+          <div class="col-md-8">
+            <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date de naissance">
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Modifier</button>
+    </div>
+  </ng-template>
 </div>
