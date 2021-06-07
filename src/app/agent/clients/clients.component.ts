@@ -5,6 +5,8 @@ import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { User } from 'src/app/models/user';
 import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from 'src/app/services/user.service';
+import { NgbModal} from "@ng-bootstrap/ng-bootstrap";
+
 
 @Component({
   selector: 'app-clients',
@@ -14,8 +16,8 @@ import { UserService } from 'src/app/services/user.service';
 export class ClientsComponent implements OnInit {
   public users: User[] = [];
   private subscriptions : Subscription[] = [];
-
-  constructor(private userService : UserService, private notifier: NotificationService) { }
+  modalContent: any;
+  constructor(private userService : UserService, private notifier: NotificationService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getClients(true);
@@ -47,6 +49,7 @@ export class ClientsComponent implements OnInit {
     }
   }
 
-
-
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  }
 }

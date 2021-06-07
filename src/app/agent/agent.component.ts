@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { NotificationType } from '../enum/notification-type.enum';
 import { AuthenticationService } from '../services/authentication.service';
 import { NotificationService } from '../services/notification.service';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-agent',
@@ -11,6 +12,7 @@ import { NotificationService } from '../services/notification.service';
   styleUrls: ['./agent.component.css']
 })
 export class AgentComponent implements OnInit {
+  collapse = false;
 
   private titleSubject = new BehaviorSubject<string>("Tableau de bord");
   public titleAction$ = this.titleSubject.asObservable();
@@ -19,7 +21,7 @@ export class AgentComponent implements OnInit {
   public agentCode: string = "";
   public agenceNom: string = "";
 
-  constructor(private authenticationService: AuthenticationService, private router : Router, private notifier: NotificationService) { }
+  constructor(private authenticationService: AuthenticationService, private router : Router, private notifier: NotificationService, private modalService: NgbModal) { }
 
   public changeTitle(title: string) : void {
     this.titleSubject.next(title);
@@ -39,4 +41,10 @@ export class AgentComponent implements OnInit {
     }
   }
 
+  toggleSideBar() {
+    this.collapse = !this.collapse;
+  }
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  }
 }

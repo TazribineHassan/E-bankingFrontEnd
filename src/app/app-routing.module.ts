@@ -8,10 +8,12 @@ import {ClientsComponent} from "./agent/clients/clients.component";
 import {AjoutClientsComponent} from "./agent/ajout-clients/ajout-clients.component";
 import {VerserComponent} from "./agent/verser/verser.component";
 import {TransactionsComponent} from "./agent/transactions/transactions.component";
+import {ProfilComponent} from "./agent/profil/profil.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'client/home', component: ClientComponent },
+<<<<<<< HEAD
   { path: 'agent/home', component: AgentComponent,
     children: [{ path: '', component: DashbordComponent },
     { path: 'clients', component: ClientsComponent },
@@ -19,6 +21,18 @@ const routes: Routes = [
     { path: 'add-client', component: AjoutClientsComponent },
     { path: 'verse', component: VerserComponent }
     ]},
+=======
+  { path: 'agent', component: AgentComponent,
+  children:[
+    {path: '', redirectTo: 'home',pathMatch:'full'},
+    {path:'home',component:DashbordComponent},
+    {path:'clients',component:ClientsComponent},
+    {path:'transactions',component:TransactionsComponent},
+    {path:'add-client',component:AjoutClientsComponent},
+    {path:'verse',component:VerserComponent},
+    {path:'profil',component:ProfilComponent}
+  ]},
+>>>>>>> e17be21c49add3f06f4c76187dc8f8d5abdecfc4
   { path: '', redirectTo: '/login', pathMatch:'full' }
 ];
 
