@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { NotificationType } from '../enum/notification-type.enum';
 import { AuthenticationService } from '../services/authentication.service';
@@ -15,6 +17,7 @@ export class ClientComponent implements OnInit {
   private titleSubject = new BehaviorSubject<string>("Home");
   public titleAction$ = this.titleSubject.asObservable();
 
+
   constructor(private authenticationService: AuthenticationService, private router : Router, private notifier: NotificationService) { }
 
 
@@ -22,8 +25,8 @@ export class ClientComponent implements OnInit {
     this.titleSubject.next(title);
   }
  
-  ngOnInit(): void {
-    if(this.authenticationService.isLoggedIn() && this.authenticationService.getUserFromLocalCache().roles == "ROLE_ADMIN"){
+  ngOnInit(): void { 
+    if(this.authenticationService.isLoggedIn() && this.authenticationService.getUserFromLocalCache().roles == "ROLE_CLIENT"){
       this.router.navigateByUrl('/client/home');
     }
     else{
@@ -31,6 +34,5 @@ export class ClientComponent implements OnInit {
       this.router.navigateByUrl('/login');
     }
   }
-
   
 }

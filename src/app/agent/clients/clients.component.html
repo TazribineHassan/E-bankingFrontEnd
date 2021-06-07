@@ -15,20 +15,22 @@
           <th>Email</th>
           <th>N° de compte</th>
           <th>Solde</th>
-          <th></th>
+          <th>Actions</th>
           </thead>
 
-          <tbody>
+          <tbody *ngFor = "let user of users">
           <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
-            <td>6drtdtfrtsr@gfyftfhio</td>
-            <td>55637668908</td>
-            <td>$320,800</td>
+             <td> {{user?.nom}} </td>
+            <td> {{user?.cin}} </td>
+            <td> {{user?.num_tele}} </td>
+            <td> {{user?.email}} </td>
+            <td> {{user?.compte?.num_compte}} </td>
+            <td> {{user?.compte?.solde}} </td>
             <td>
-              <a><i class="fa fa-edit"></i></a>
-              <a style="margin-left: 10px"><i class="fa fa-trash"></i></a>
+              <div class="btn-group">
+                <button class="btn btn-outline-primary"><i class="fa fa-edit "></i></button>
+                <button class="btn btn-outline-danger"><i class="fa fa-trash"></i></button>
+              </div>
             </td>
           </tr>
 

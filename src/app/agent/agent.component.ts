@@ -12,9 +12,12 @@ import { NotificationService } from '../services/notification.service';
 })
 export class AgentComponent implements OnInit {
 
-  private titleSubject = new BehaviorSubject<string>("Home");
+  private titleSubject = new BehaviorSubject<string>("Tableau de bord");
   public titleAction$ = this.titleSubject.asObservable();
-  public agentName: string = "";
+  public agentNom: string = "";
+  public agentPrenom: string = "";
+  public agentCode: string = "";
+  public agenceNom: string = "";
 
   constructor(private authenticationService: AuthenticationService, private router : Router, private notifier: NotificationService) { }
 
@@ -23,8 +26,11 @@ export class AgentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.authenticationService.isLoggedIn() && this.authenticationService.getUserFromLocalCache().roles == "ROLE_ADMIN"){
-      this.agentName =  this.authenticationService.getUserFromLocalCache().nom;
+    if(this.authenticationService.isLoggedIn() && this.authenticationService.getUserFromLocalCache().roles == "ROLE_AGENT"){
+      this.agentNom =  this.authenticationService.getUserFromLocalCache().nom;
+      this.agentPrenom =  this.authenticationService.getUserFromLocalCache().prenom;
+      this.agentCode =  this.authenticationService.getUserFromLocalCache().code_agent;
+      this.agenceNom =  this.authenticationService.getUserFromLocalCache().agence.nom;
       this.router.navigateByUrl('/agent/home');
     }
     else{
