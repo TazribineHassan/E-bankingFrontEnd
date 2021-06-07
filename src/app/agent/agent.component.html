@@ -9,20 +9,26 @@
 
       <div class="sidebar-brand-text mx-3">Mon espace agent</div>
     </a>
-    <hr class="sidebar-divider my-0"><br>
-    <div style="text-align: center;color: white">
+    <hr class="sidebar-divider my-0" >
+    <li style="text-align: center;color: white" class="nav-item ">
       <img src="assets/img/undraw_profile.svg" style="align-self: center; margin: 20px;">
-      <div > Nom Prenom</div>
-      <div>N° Agent: gfdgdf</div>
-    </div><br>
+      <span > Nom Prenom</span><br>
+      <span>N° Agent: gfdgdf</span>
+    </li><br>
     <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
-      <a class="nav-link" routerLink="/agent" (click)="$event.stopPropagation()">
+      <a class="nav-link" routerLink="/agent" >
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Tableau de bord</span></a>
+    </li>
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item ">
+      <a class="nav-link" routerLink="./profil" >
+        <i class="fas fa-user-circle"></i>
+        <span>Mon profil</span></a>
     </li>
 
 
@@ -51,6 +57,12 @@
       <a class="nav-link collapsed"  aria-expanded="true" routerLink="./verse" aria-controls="collapseUtilities">
         <i class="fas fa-long-arrow-alt-right"></i>
         <span> Effectuer un versement</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed"  aria-expanded="true" (click)="open(content)" aria-controls="collapseUtilities">
+        <i class="fas fa-sign-out-alt"></i>
+        <span> Deconnexion</span>
       </a>
     </li>
 
@@ -98,7 +110,7 @@
     <footer class="sticky-footer bg-white " >
       <div class="container my-auto">
         <div class="copyright text-center my-auto">
-          <span>Copyright &copy; Your Website 2021</span>
+          <span>Copyright &copy; E-banking 2021</span>
         </div>
       </div>
     </footer>
@@ -107,30 +119,20 @@
   </div>
   <!-- End of Content Wrapper -->
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded"  href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-       aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
-<!-- End of Page Wrapper -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Deconnexion</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Etes vous sur de vouloir se deconnecter?
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn bg-danger text-white ">Se deconnecter</button>
+    <button type="button" class="btn btn-outline-dark " (click)="modal.close('Save click')">Quitter</button>
+  </div>
+</ng-template>
 

@@ -10,6 +10,7 @@ import { VerserComponent } from './verser/verser.component';
 import {DataTablesModule} from "angular-datatables";
 import {FormsModule} from "@angular/forms";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { ProfilComponent } from './profil/profil.component';
 
 
 
@@ -21,6 +22,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     TransactionsComponent,
     AjoutClientsComponent,
     VerserComponent,
+    ProfilComponent,
   ],
   imports: [
     CommonModule,

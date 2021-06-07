@@ -31,7 +31,7 @@
               <a><i class="fa fa-edit btn" (click)="open(content)"></i></a>
             </td>
             <td>
-              <a ><i class="fa fa-trash btn"></i></a>
+              <a ><i class="fa fa-trash btn" (click)="open(delete)"></i></a>
             </td>
           </tr>
 
@@ -52,7 +52,7 @@
         <div class="form-group row">
           <label class="col-md-4 col-form-label" for="cin-input">CIN du client<span style="color: red">*</span></label>
           <div class="col-md-8">
-            <input type="text" id="cin-input" name="cin-input" class="form-control" required>
+            <input type="text" id="cin-input" name="cin-input" class="form-control" value="" required>
 
           </div>
         </div>
@@ -62,17 +62,17 @@
             <label class="col-form-label" for="nom-input">Nom du client<span style="color: red">*</span></label>
           </div>
           <div class="form-group col-sm-4">
-            <input type="text"  id="nom-input" name="nom-input" class="form-control" placeholder="Nom" required>
+            <input type="text" value="" id="nom-input" name="nom-input" class="form-control" placeholder="Nom" required>
           </div>
           <div class="form-group col-sm-4">
-            <input type="text"  id="prenom-input" name="email-input" class="form-control" placeholder="Prenom" required >
+            <input type="text" value="" id="prenom-input" name="email-input" class="form-control" placeholder="Prenom" required >
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-md-4 col-form-label" for="email-input">Email<span style="color: red">*</span></label>
           <div class="col-md-8">
-            <input type="email"  id="email-input" name="email-input" class="form-control"  autocomplete="email" required>
+            <input type="email" value="" id="email-input" name="email-input" class="form-control"  autocomplete="email" required>
           </div>
         </div>
         <div class="form-group row">
@@ -84,7 +84,7 @@
         <div class="form-group row">
           <label class="col-md-4 col-form-label" for="sold-input">Solde<span style="color: red">*</span></label>
           <div class="col-md-8">
-            <input type="text" id="sold-input" name="sold-input" class="form-control" placeholder="Solde" required>
+            <input type="text" id="sold-input" name="sold-input" class="form-control" placeholder="Solde"  required>
           </div>
         </div>
         <div class="form-group row">
@@ -97,7 +97,23 @@
 
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Modifier</button>
+      <button type="button" class="btn bg-primary text-white">Modifier</button>
+      <button type="button" class="btn btn-outline-dark " (click)="modal.close('Save click')">Quitter</button>
+    </div>
+  </ng-template>
+  <ng-template #delete let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" >Supprimer</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Etes vous sur de vouloir se Supprimer ce client?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn bg-danger text-white ">Confirmer</button>
+      <button type="button" class="btn btn-outline-dark " (click)="modal.close('Save click')">Quitter</button>
     </div>
   </ng-template>
 </div>
