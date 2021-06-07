@@ -11,14 +11,15 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class DashbordComponent implements OnInit {
 
-  public solde_banque :string = "";
   public clientsNumber :number = 0;
+  public agent: User = new User();
   public users: User[] = [];
   private subscriptions : Subscription[] = [];
   constructor(private authenticationService: AuthenticationService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.solde_banque = this.authenticationService.getUserFromLocalCache().agence.banque.solde;
+    // this.solde_banque = this.authenticationService.getUserFromLocalCache().agence.banque.solde;
+    this.agent = this.authenticationService.getUserFromLocalCache();
     this.getClients();
   }
 

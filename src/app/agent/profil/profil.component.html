@@ -10,34 +10,46 @@
           <!-- Card Body -->
           <div class="card-body align-self-center col-11">
             <div class="form-group row">
-              <div class="col-md-3 " >CIN du client :</div>
+              <div class="col-md-3 " >Code :</div>
               <div class="col-md-9">
-                 ######
+                 {{agent?.code_agent}}
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-3 " >CIN :</div>
+              <div class="col-md-9">
+                {{agent?.cin}}
               </div>
             </div>
             <div class="form-group row">
               <div class="col-md-3 " >Nom et Prenom :</div>
               <div class="col-md-9">
-                643578367
+                {{agent?.nom}} {{agent?.prenom}}
               </div>
             </div>
             <div class="row">
-              <div class="form-group col-sm-3">
-                <div class="" >Date de naissance :</div>
+              <div class="form-group col-md-3">
+                <div class="" >Date de naissance:</div>
               </div>
-              <div class="form-group col-sm-9">
-                13/6/1980
+              <div class="form-group col-md-9">
+                {{agent?.date_naissance}}
               </div>
             </div>
 
             <div class="form-group row">
               <div class="col-md-3 " >Email :</div>
               <div class="col-md-9">
-                56454@yffg.gh
+                {{agent?.email}}
               </div>
             </div>
             <div class="form-group row">
-              <div class="col-md-3 col-form-label" >Telephone</div>
+              <div class="col-md-3 " >Username :</div>
+              <div class="col-md-9">
+                {{agent?.username}}
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-3 col-form-label" >Téléphone : </div>
               <div class="col-md-9">
                 +21234567890
               </div>

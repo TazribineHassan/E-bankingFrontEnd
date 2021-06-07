@@ -7,13 +7,15 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
 
-      <div class="sidebar-brand-text mx-3"> {{agenceNom}} </div>
+      <div class="sidebar-brand-text mx-3"> {{userAgent?.agence?.banque?.nom}} </div>
     </a>
     <hr class="sidebar-divider my-0"><br>
     <div style="text-align: center;color: white">
       <img src="assets/img/undraw_profile.svg" style="width: 160px; align-self: center;">
-      <div> {{agentNom}} {{agentPrenom}} </div>
-      <div>N° Agent: {{agentCode}}</div>
+      <div> {{userAgent?.nom}} {{userAgent?.prenom}} </div>
+      <div>N° Agent: 
+        {{userAgent?.code_agent}}
+      </div>
     </div><br>
     <!-- Divider -->
     <hr class="sidebar-divider">
