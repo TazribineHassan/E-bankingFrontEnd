@@ -7,26 +7,28 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
 
-      <div class="sidebar-brand-text mx-3">Mon espace agent</div>
+      <div class="sidebar-brand-text mx-3"> {{userAgent?.agence?.banque?.nom}} </div>
     </a>
-    <hr class="sidebar-divider my-0" >
-    <li style="text-align: center;color: white" class="nav-item ">
-      <img src="assets/img/undraw_profile.svg" style="align-self: center; margin:10px;height: 50px;"><br>
-      <span > Nom Prenom</span><br>
-      <span>N° Agent: gfdgdf</span>
-    </li><br>
+    <hr class="sidebar-divider my-0"><br>
+    <div style="text-align: center;color: white">
+      <img src="assets/img/undraw_profile.svg" style="width: 160px; align-self: center;">
+      <div> {{userAgent?.nom}} {{userAgent?.prenom}} </div>
+      <div>N° Agent: 
+        {{userAgent?.code_agent}}
+      </div>
+    </div><br>
     <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item ">
-      <a class="nav-link" routerLink="/agent" >
+    <li class="nav-item active">
+      <a class="nav-link" (click)="changeTitle('Tableau de bord')" routerLink="/agent">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Tableau de bord</span></a>
     </li>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
-      <a class="nav-link" routerLink="./profil" >
+      <a class="nav-link" (click)="changeTitle('Mon profil')" routerLink="./profil" >
         <i class="fas fa-user-circle"></i>
         <span>Mon profil</span></a>
     </li>
@@ -34,38 +36,31 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed"  aria-expanded="true" aria-controls="collapseTwo" routerLink="./clients" (click)="$event.stopPropagation()">
+      <a class="nav-link collapsed"  aria-expanded="true" (click)="changeTitle('Clients')" aria-controls="collapseTwo" routerLink="./clients">
         <i class="fas fa-users"></i>
-        <span> Clients</span>
+        <span>Clients</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link collapsed"  aria-expanded="true" aria-controls="collapseUtilities" routerLink="./add-client">
+      <a class="nav-link collapsed" (click)="changeTitle('Ajouter un client')" aria-expanded="true" aria-controls="collapseUtilities" routerLink="./add-client">
         <i class="fas fa-user"></i>
-        <span> Ajouter un client</span>
+        <span>Ajouter un client</span>
       </a>
     </li>
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed"  aria-expanded="true" routerLink="./transactions" aria-controls="collapseUtilities">
+      <a class="nav-link collapsed"  aria-expanded="true" (click)="changeTitle('Transactions')" routerLink="./transactions" aria-controls="collapseUtilities">
         <i class="fas fa-exchange-alt"></i>
-        <span> Transactions</span>
+        <span>Transactions</span>
       </a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link collapsed"  aria-expanded="true" routerLink="./verse" aria-controls="collapseUtilities">
+      <a class="nav-link collapsed"  aria-expanded="true" (click)="changeTitle('Effectuer un versement')" routerLink="./verse" aria-controls="collapseUtilities">
         <i class="fas fa-long-arrow-alt-right"></i>
-        <span> Effectuer un versement</span>
+        <span>Effectuer un versement</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed"  aria-expanded="true" (click)="open(content)" aria-controls="collapseUtilities">
-        <i class="fas fa-sign-out-alt"></i>
-        <span> Deconnexion</span>
-      </a>
-    </li>
-
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -100,6 +95,12 @@
           </div>
         </div>
       </form>
+
+      <!-- Topbar Navbar -->
+      <div class="mr-5 btn btn-outline-primary" *ngIf="titleAction$ | async as title"> {{title}} </div>
+      <button class="btn mr-2 ml-3 btn btn-outline-primary" (click)="open(content)" ><i class="fas fa-sign-out-alt"></i></button>
+
+
     </nav>
 
   <router-outlet>

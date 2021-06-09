@@ -20,7 +20,7 @@
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                   Solde de l'agence</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">40.0000</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"> {{agent?.agence?.banque?.solde}} DH</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -38,7 +38,7 @@
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                   Nombre de clients</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">215</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"> {{clientsNumber}} </div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -117,35 +117,36 @@
           <div class="card-body align-self-center col-11">
             <div class="form-group row">
               <div class="col-md-3 " >Nom de l'agence :</div>
-              <div class="col-md-9">
-                nom agence ######
+              <div class="col-md-9  font-weight-bold">
+                {{agent?.agence?.nom}}
               </div>
             </div>
             <div class="form-group row">
-              <div class="col-md-3 " >Code de l'agence</div>
-              <div class="col-md-9">
-                643578367
+              <div class="col-md-3 " >Code de l'agence : </div>
+              <div class="col-md-9  font-weight-bold">
+                {{agent?.agence?.code}}
               </div>
             </div>
             <div class="row">
               <div class="form-group col-sm-3">
                 <div class="" >Horaire de travail :</div>
               </div>
-              <div class="form-group col-sm-9">
-                8.00-15.00
+              <div class="form-group col-sm-9  font-weight-bold">
+                {{agent?.agence?.horaire_debut}} - {{agent?.agence?.horaire_fin}}
               </div>
             </div>
 
             <div class="form-group row">
               <div class="col-md-3 " >Adresse :</div>
-              <div class="col-md-9">
-                rue 5464 ville xxxx code postal xxx,<br>ville, pays.
+              <div class="col-md-9  font-weight-bold">
+                Rue {{agent?.agence?.adresse?.rue}}, code postal {{agent?.agence?.adresse?.code_postal}},<br>
+                {{agent?.agence?.adresse?.ville}}, {{agent?.agence?.adresse?.pays}}.
               </div>
             </div>
             <div class="form-group row">
-              <div class="col-md-3 col-form-label" >Telephone</div>
-              <div class="col-md-9">
-                +21234567890
+              <div class="col-md-3 col-form-label" >Téléphone : </div>
+              <div class="col-md-9 mt-2  font-weight-bold">
+                {{agent?.agence?.num_tele}}
               </div>
             </div>
           </div>

@@ -4,16 +4,16 @@ import { NotificationType } from '../enum/notification-type.enum';
 import { AuthenticationService } from '../services/authentication.service';
 import { NotificationService } from '../services/notification.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationGuard implements CanActivate {
 
-  constructor(private authenticationService: AuthenticationService, private router: Router, private notificationSerice: NotificationService ){}
+  constructor(private authenticationService: AuthenticationService, private router: Router, private notifier: NotificationService){}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): boolean {
     return this.isUserLoggedIn();
   }
   
@@ -21,8 +21,9 @@ export class AuthenticationGuard implements CanActivate {
     if(this.authenticationService.isLoggedIn()){
       return true;
     }
-    this.router.navigate(['/login']);
-    this.notificationSerice.notify(NotificationType.ERROR, `You need to log in to access this page`)
+    this.router.navigate(["/login"]);
+    this.notifier.notify(NotificationType.ERROR, "You need to login");
     return false;
   }
+
 }

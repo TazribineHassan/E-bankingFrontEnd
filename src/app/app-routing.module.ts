@@ -12,17 +12,15 @@ import {ProfilComponent} from "./agent/profil/profil.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'client/home', component: ClientComponent },
+  { path: 'client', component: ClientComponent },
   { path: 'agent', component: AgentComponent,
-  children:[
-    {path: '', redirectTo: 'home',pathMatch:'full'},
-    {path:'home',component:DashbordComponent},
-    {path:'clients',component:ClientsComponent},
-    {path:'transactions',component:TransactionsComponent},
-    {path:'add-client',component:AjoutClientsComponent},
-    {path:'verse',component:VerserComponent},
-    {path:'profil',component:ProfilComponent}
-  ]},
+    children: [{ path: '', component: DashbordComponent },
+    { path: 'clients', component: ClientsComponent },
+    { path: 'transactions', component: TransactionsComponent },
+    { path: 'add-client', component: AjoutClientsComponent },
+    { path: 'verse', component: VerserComponent },
+    { path: 'profil', component: ProfilComponent }
+    ]},
   { path: '', redirectTo: '/login', pathMatch:'full' }
 ];
 
