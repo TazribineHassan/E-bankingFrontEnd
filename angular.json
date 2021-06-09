@@ -32,11 +32,13 @@
             "styles": [
               "src/styles.css",
               "src/assets/css/sb-admin-2.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
-              "node_modules/datatables.net/js/jquery.dataTables.js"
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "src/assets/js/sb-admin-2.min.js"
             ]
           },
           "configurations": {
