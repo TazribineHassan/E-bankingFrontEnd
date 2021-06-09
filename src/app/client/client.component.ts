@@ -27,7 +27,7 @@ export class ClientComponent implements OnInit {
  
   ngOnInit(): void { 
     if(this.authenticationService.isLoggedIn() && this.authenticationService.getUserFromLocalCache().roles == "ROLE_CLIENT"){
-      this.router.navigateByUrl('/client/home');
+      this.router.navigateByUrl('/client');
     }
     else{
       this.notifier.notify(NotificationType.ERROR, "You don't have permission")

@@ -28,7 +28,6 @@ export class DashbordComponent implements OnInit {
       this.userService.getUsers().subscribe(
         (response : User[] | any) => {
           this.userService.addUsersToLacalCache(response);
-          console.log(response);
           this.users = response;
             this.clientsNumber = response.length;
         }

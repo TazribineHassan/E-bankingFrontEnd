@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { CustomHttpResponse } from '../models/cutom-http-response';
+import { AuthenticationService } from './authentication.service';
 
 
 @Injectable({
@@ -11,26 +12,26 @@ import { CustomHttpResponse } from '../models/cutom-http-response';
 })
 export class UserService {
   private host: string = environment.apiUrl;
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private authenticationService : AuthenticationService) { }
 
   getUsers(): Observable<User[] | HttpErrorResponse>{
     return this.http.get<User[]>(`${this.host}/agent/client/all`);
   }
 
   addUser(formData: FormData): Observable<User | HttpErrorResponse>{
-    return this.http.post<User>(`${this.host}/user/add`, formData);
+    return this.http.post<User>(`${this.host}/agent/client/add`, formData);
   }
 
   updateUser(formData: FormData): Observable<User | HttpErrorResponse>{
-    return this.http.post<User>(`${this.host}/user/update`, formData);
+    return this.http.put<User>(`${this.host}/agent/client/update`, formData);
   }
  
   restPassword(email: string): Observable<CustomHttpResponse | HttpErrorResponse>{
     return this.http.get<CustomHttpResponse>(`${this.host}/user/resetpassword/${email}`);
   }
 
-  deleteUser(userId:number): Observable<CustomHttpResponse | HttpErrorResponse> {
-    return this.http.delete<CustomHttpResponse>(`${this.host}/user/delete/${userId}`);
+  blockUserAccount(userId:number): Observable<CustomHttpResponse | HttpErrorResponse> {
+    return this.http.put<CustomHttpResponse>(`${this.host}/agent/client/terminate/${userId}`, null);
   }
 
   addUsersToLacalCache(users:User[]):void{
@@ -44,16 +45,17 @@ export class UserService {
     return null;
   }
 
-  createUserFormData(loggedInUsername: string, user:User): FormData {
+  createUserFormData(loggedInUsername: string | any, user:User): FormData {
     const formData = new FormData();
-    formData.append('currentUsername', loggedInUsername);
+    formData.append('username', user.username);
     formData.append('cin', user.cin);
     formData.append('nom', user.nom);
     formData.append('prenom', user.prenom);
     formData.append('email', user.email);
-    formData.append('roles', user.roles);
-    formData.append('iSActive', JSON.stringify(user.active));
-    formData.append('isNotLocked', JSON.stringify(user.notLocked));
+    formData.append('num_tele', user.num_tele);
+    formData.append('date_naissance', user.date_naissance + "");
+    formData.append('isActive', user.active + "");
+    formData.append('id_agence', JSON.stringify(this.authenticationService.getUserFromLocalCache().agence.id));
     return formData;
   }
 }

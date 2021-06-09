@@ -12,8 +12,8 @@ import {ProfilComponent} from "./agent/profil/profil.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'client/home', component: ClientComponent },
-  { path: 'agent/home', component: AgentComponent,
+  { path: 'client', component: ClientComponent },
+  { path: 'agent', component: AgentComponent,
     children: [{ path: '', component: DashbordComponent },
     { path: 'clients', component: ClientsComponent },
     { path: 'transactions', component: TransactionsComponent },

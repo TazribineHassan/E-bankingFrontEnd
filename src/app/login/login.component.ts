@@ -22,10 +22,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if(this.authenticationService.isLoggedIn()){
       if(this.authenticationService.getUserFromLocalCache().roles == "ROLE_CLIENT"){
-        this.router.navigateByUrl('/client/home');
+        this.router.navigateByUrl('/client');
       }
       else if(this.authenticationService.getUserFromLocalCache().roles == "ROLE_AGENT"){
-        this.router.navigateByUrl('/agent/home');
+        this.router.navigateByUrl('/agent');
       }
       else{
         this.sendErrorNotification(NotificationType.ERROR, "You don't have the permission");
@@ -44,10 +44,10 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.authenticationService.saveToken(token);
           this.authenticationService.addUserToLocalCache(response.body);
           if(this.authenticationService.getUserFromLocalCache().roles == "ROLE_CLIENT"){
-            this.router.navigateByUrl('/client/home');
+            this.router.navigateByUrl('/client');
           }
           else if(this.authenticationService.getUserFromLocalCache().roles == "ROLE_AGENT"){
-            this.router.navigateByUrl('/agent/home');
+            this.router.navigateByUrl('/agent');
           }
           else{
             this.sendErrorNotification(NotificationType.ERROR, "You don't have the permission");

@@ -7,7 +7,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table datatable class="table table-bordered"  width="100%" cellspacing="0">
+        <table datatable class="table table-bordered table-hover"  width="100%" cellspacing="0">
           <thead>
           <th>Nom</th>
           <th>CIN</th>
@@ -15,25 +15,29 @@
           <th>Email</th>
           <th>N° de compte</th>
           <th>Solde</th>
+          <th>Status</th>
           <th>Actions</th>
           </thead>
 
           <tbody *ngFor = "let user of users">
-          <tr>
-             <td> {{user?.nom}} </td>
-            <td> {{user?.cin}} </td>
-            <td> {{user?.num_tele}} </td>
-            <td> {{user?.email}} </td>
-            <td> {{user?.compte?.num_compte}} </td>
-            <td> {{user?.compte?.solde}} </td>
-            <td>
-              <div class="btn-group">
-                <button class="btn btn-outline-primary" (click)="open(content)"><i class="fa fa-edit "></i></button>
-                <button class="btn btn-outline-danger" (click)="open(delete)"><i class="fa fa-trash"></i></button>
-              </div>
-            </td>
-          </tr>
-
+            <tr >
+              <td> {{user?.nom}} </td>
+              <td> {{user?.cin}} </td>
+              <td> {{user?.num_tele}} </td>
+              <td> {{user?.email}} </td>
+              <td> {{user?.compte?.num_compte}} </td>
+              <td> {{user?.compte?.solde}} </td>
+              <td> 
+                <span *ngIf="user?.active && user?.notLocked" class="badge badge-success"> Activé </span> 
+                <span *ngIf="!user?.active || !user?.notLocked" class="badge badge-danger"> Désactivé </span> 
+              </td>
+              <td>
+                <div class="btn-group">
+                  <button class="btn btn-outline-primary" (click)="editUser(user)" (click)="open(content)"><i class="fa fa-edit "></i></button>
+                  <button class="btn btn-outline-danger" (click)="passUser(user?.id)"  (click)="open(delete)"><i class="fas fa-user-lock"></i></button>
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -46,74 +50,80 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+    <form #editUserForm="ngForm" class="form-horizontal">
     <div class="modal-body">
 
         <div class="form-group row">
-          <label class="col-md-4 col-form-label" for="cin-input">CIN du client<span style="color: red">*</span></label>
+          <label class="col-md-4 col-form-label" for="cin-input">CIN : <span style="color: red">*</span></label>
           <div class="col-md-8">
-            <input type="text" id="cin-input" name="cin-input" class="form-control" value="" required>
+            <input type="text" id="cin-input" name="cin" class="form-control" [(ngModel)]="editedUser.cin" required>
 
           </div>
         </div>
 
         <div class="row">
           <div class="form-group col-sm-4">
-            <label class="col-form-label" for="nom-input">Nom du client<span style="color: red">*</span></label>
+            <label class="col-form-label" for="nom-input">Nom et Prénom<span style="color: red">*</span></label>
           </div>
           <div class="form-group col-sm-4">
-            <input type="text" value="" id="nom-input" name="nom-input" class="form-control" placeholder="Nom" required>
+            <input type="text" [(ngModel)]="editedUser.nom" id="nom-input" name="nom" class="form-control"  placeholder="Nom" required>
           </div>
           <div class="form-group col-sm-4">
-            <input type="text" value="" id="prenom-input" name="email-input" class="form-control" placeholder="Prenom" required >
+            <input type="text" [(ngModel)]="editedUser.prenom" id="prenom-input" name="prenom" class="form-control" placeholder="Prenom" required >
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-md-4 col-form-label" for="email-input">Email<span style="color: red">*</span></label>
           <div class="col-md-8">
-            <input type="email" value="" id="email-input" name="email-input" class="form-control"  autocomplete="email" required>
+            <input type="email" [(ngModel)]="editedUser.email" id="email-input" name="email" class="form-control"  autocomplete="email" required>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-md-4 col-form-label" for="tel-input">Telephone<span style="color: red">*</span></label>
+          <label class="col-md-4 col-form-label" for="tel-input">Téléphone<span style="color: red">*</span></label>
           <div class="col-md-8">
-            <input type="text" id="tel-input" name="tel-input" class="form-control" placeholder="Telephone" required>
+            <input type="text" id="tel-input" name="num_tele" class="form-control" [(ngModel)]="editedUser.num_tele" placeholder="Telephone" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-4 col-form-label" for="sold-input">Solde<span style="color: red">*</span></label>
           <div class="col-md-8">
-            <input type="text" id="sold-input" name="sold-input" class="form-control" placeholder="Solde"  required>
+            <input type="text" id="sold-input" disabled name="sold" [(ngModel)]="editedUser.compte.solde" class="form-control" placeholder="Solde"  required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-4 col-form-label" for="date-input">Date de naissance</label>
           <div class="col-md-8">
-            <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date de naissance">
+            <input class="form-control" id="date" type="date" name="date" [(ngModel)]="editedUser.date_naissance">
           </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="active"  id="flexRadioDefault1" [(ngModel)]="editedUser.active">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Activer le compte
+          </label>
         </div>
 
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn bg-primary text-white">Modifier</button>
-      <button type="button" class="btn btn-outline-dark " (click)="modal.close('Save click')">Quitter</button>
+      <button type="button" (click)="onUpdateUser()" [disabled]="editUserForm.invalid" class="btn bg-primary text-white">Modifier</button>
+      <button type="button" class="btn btn-outline-dark " id="editColse" (click)="modal.close('Save click')">Quitter</button>
     </div>
     </form>
   </ng-template>
   <ng-template #delete let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" >Supprimer</h4>
+      <h4 class="modal-title" >Bloquer</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      Etes vous sur de vouloir se Supprimer ce client?
+      Êtes-vous sûr de vouloir bloquer ce compte?
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn bg-danger text-white ">Confirmer</button>
-      <button type="button" class="btn btn-outline-dark " (click)="modal.close('Save click')">Quitter</button>
+      <button type="button" class="btn bg-danger text-white" (click) = "blockUserAccount()">Oui</button>
+      <button type="button" class="btn btn-outline-dark " id="closeModal"  (click)="modal.close('Save click')">Non</button>
     </div>
   </ng-template>
 </div>

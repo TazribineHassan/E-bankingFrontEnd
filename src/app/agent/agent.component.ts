@@ -29,7 +29,7 @@ export class AgentComponent implements OnInit {
   ngOnInit(): void {
     if(this.authenticationService.isLoggedIn() && this.authenticationService.getUserFromLocalCache().roles == "ROLE_AGENT"){
       this.userAgent = this.authenticationService.getUserFromLocalCache();
-      this.router.navigateByUrl('/agent/home');
+      this.router.navigateByUrl('/agent');
     }
     else{
       this.notifier.notify(NotificationType.ERROR, "You don't have permission")

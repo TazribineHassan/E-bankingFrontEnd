@@ -22,7 +22,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-      <a class="nav-link" (click)="changeTitle('Tableau de bord')" routerLink="/agent/home">
+      <a class="nav-link" (click)="changeTitle('Tableau de bord')" routerLink="/agent">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Tableau de bord</span></a>
     </li>
@@ -61,13 +61,6 @@
         <span>Effectuer un versement</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed"  aria-expanded="true" (click)="open(content)" aria-controls="collapseUtilities">
-        <i class="fas fa-sign-out-alt"></i>
-        <span> Deconnexion</span>
-      </a>
-    </li>
-
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -103,7 +96,7 @@
 
       <!-- Topbar Navbar -->
       <div class="mr-5 btn btn-outline-primary" *ngIf="titleAction$ | async as title"> {{title}} </div>
-      <button class="btn mr-2 ml-3 " ></button>
+      <button class="btn mr-2 ml-3 btn btn-outline-primary" (click)="open(content)" ><i class="fas fa-sign-out-alt"></i></button>
 
 
     </nav>
@@ -139,8 +132,8 @@
     Etes vous sur de vouloir se deconnecter?
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn bg-danger text-white ">Se deconnecter</button>
-    <button type="button" class="btn btn-outline-dark " (click)="modal.close('Save click')">Quitter</button>
+    <button type="button" class="btn bg-danger text-white ">Oui</button>
+    <button type="button" class="btn btn-outline-dark " (click)="modal.close('Save click')">Non</button>
   </div>
 </ng-template>
 
