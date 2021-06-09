@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'E-bankingFrontAngular';
+  subMenuState:boolean = false;
+  burgerClicked(event: boolean){
+    this.subMenuState = event;
+    //console.log("inside burgerClicked: pls. change showMenu to be:",this.subMenuState);
+  }
 }

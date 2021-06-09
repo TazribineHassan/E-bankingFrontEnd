@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {ClientSideBarComponent} from "../client-side-bar/client-side-bar.component";
 
 @Component({
   selector: 'app-client-nav-bar',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientNavBarComponent implements OnInit {
 
+
   constructor() { }
 
+
+  @Output() menuState = new EventEmitter();
+
+  opened: boolean | undefined;
+  showMenu = false; /* false by default, since hidden */
+  toggleMenu() {
+    //onsole.log("inside toggleMenu");
+    this.showMenu = !this.showMenu;
+    this.menuState.emit(this.showMenu);
+  }
   ngOnInit(): void {
   }
-
 }

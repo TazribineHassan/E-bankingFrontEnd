@@ -8219,7 +8219,7 @@ h1, h2, h3, h4, h5,
   vertical-align: top;
   overflow: auto;
   min-width: 300px;
-  max-width: 300px;
+  max-width:300px ;
   min-height: 100vh;
   height: 100vh;
   background: #1d1919;
@@ -8229,13 +8229,6 @@ h1, h2, h3, h4, h5,
   transition: all 0.3s; }
   #sidebar.active {
     margin-left: -300px; }
-  #sidebar .logo {
-    display: block;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto; }
-    #sidebar .logo span {
-      display: block; }
   #sidebar ul.components {
     padding: 0; }
   #sidebar ul li {
@@ -8254,11 +8247,11 @@ h1, h2, h3, h4, h5,
     #sidebar ul li.active > a {
       background: transparent;
       color: #f8b739; }
-  @media (max-width: 991.98px) {
+  @media screen and (max-width: 300px) {
     #sidebar {
       margin-left: -300px; }
       #sidebar.active {
-        margin-left: 0; } }
+        margin-left: 0;}}
 
 a[data-toggle="collapse"] {
   position: relative; }

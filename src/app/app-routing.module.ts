@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { ClientSideBarComponent } from './client-side-bar/client-side-bar.component';
-import { ClientNavBarComponent } from './client-nav-bar/client-nav-bar.component';
+
 import { ClientAccuielComponent } from './client-accuiel/client-accuiel.component';
 import { ClientProfilComponent } from './client-profil/client-profil.component';
 import { ClientVirerComponent } from './client-virer/client-virer.component';
