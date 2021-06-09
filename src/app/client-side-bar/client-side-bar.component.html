@@ -1,29 +1,24 @@
-<nav id="sidebar" xmlns="http://www.w3.org/1999/html">
+<nav id="sidebar">
     <div class="p-4 pt-5">
-      <div class="title"><h1><a href="accueil" ><strong>E-Client</strong></a></h1></div><br><br>
+      <div class="title"><h1><a routerLink="accueil" ><strong>E-Client</strong></a></h1></div><br><br>
       <ul class="list-unstyled components mb-5">
         <li class="active">
-          <a href="accueil">Mon compte</a>
+          <a routerLink="accueil">Mon compte</a>
         </li>
         <li>
-          <a href="profil">Profil</a>
+          <a routerLink="profil">Profil</a>
         </li>
         <li>
-          <a href="virer">Virer</a>
+          <a routerLink="virer">Virer</a>
         </li>
         <li>
-          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Historique</a>
-          <ul class="collapse list-unstyled" id="pageSubmenu">
-            <li>
-              <a href="virements">Virements</a>
-            </li>
-            <li>
-              <a href="versements">Versements</a>
-            </li>
-            <li>
-              <a href="Listfacturation">Payements</a>
-            </li>
-          </ul>
+          <a routerLink="virements">Virements</a>
+        </li>
+        <li>
+          <a routerLink="versements">Versements</a>
+        </li>
+        <li>
+          <a routerLink="Listfacturation">Payements</a>
         </li>
       </ul>
 
@@ -34,4 +29,5 @@
       </div>
     </div>
   </nav>
+
 

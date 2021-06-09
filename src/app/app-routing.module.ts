@@ -12,9 +12,7 @@ import { ClientHistFactComponent } from './client-hist-fact/client-hist-fact.com
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/app', pathMatch:'full'},
-  { path: '', component: ClientSideBarComponent},
-  { path: '', component: ClientNavBarComponent},
+  { path: '', component: ClientAccuielComponent},
   { path: 'accueil', component: ClientAccuielComponent, },
   { path: 'profil', component: ClientProfilComponent},
   { path: 'virer', component: ClientVirerComponent},

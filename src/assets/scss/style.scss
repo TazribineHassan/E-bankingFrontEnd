@@ -1,6 +1,10 @@
 @import 'bootstrap/bootstrap';
 @import 'bootstrap/variables';
 @import 'bootstrap/mixins';
+@import "bootstrap/functions";
+@import "bootstrap/mixins/_breakpoints";
+
+
 
 $font-primary: 'Poppins',Arial, sans-serif;
 $primary: #f8b739;
@@ -98,6 +102,7 @@ h1, h2, h3, h4, h5,
 #sidebar {
   min-width: 300px;
   max-width: 300px;
+  max-height: 100vh;
   background: #1d1919;
   color: #fff;
   transition: all 0.3s;
@@ -167,6 +172,7 @@ a[data-toggle="collapse"] {
 	span{
 		@include media-breakpoint-down(md){
 	    display: none;
+
 		}
 	}
 }
