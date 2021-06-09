@@ -9,7 +9,6 @@ import { NgbModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class ClientsComponent implements OnInit {
 
-  modalContent: any;
 
   constructor(private modalService: NgbModal) { }
 

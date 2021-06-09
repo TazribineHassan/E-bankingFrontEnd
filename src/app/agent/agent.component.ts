@@ -8,6 +8,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class AgentComponent implements OnInit {
   collapse = false;
+  topbutton = true;
 
   constructor(private modalService: NgbModal) { }
 
@@ -16,6 +17,7 @@ export class AgentComponent implements OnInit {
 
   toggleSideBar() {
     this.collapse = !this.collapse;
+    this.topbutton=!this.collapse;
   }
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
