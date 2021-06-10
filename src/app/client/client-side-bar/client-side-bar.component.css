@@ -1,0 +1,14 @@
+.title{
+  font-size: 24px;
+  font-weight: 700;
+  padding: unset;
+  color: #fec107;
+  text-transform: uppercase;
+  text-align: center;
+}
+strong{
+  text-transform: uppercase;
+  color: #fec107 !important;
+  font-weight: 700;
+}
+

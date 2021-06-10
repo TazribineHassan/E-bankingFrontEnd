@@ -1,2 +1,11 @@
-<p>client works!</p>
+<div class="wrapper d-flex align-items-stretch ">
+    <app-client-side-bar [subMenuState]="subMenuState"></app-client-side-bar>
+    <div id="content" class="p-0 p-md-2">
+      <app-client-nav-bar (menuState)='burgerClicked($event)'></app-client-nav-bar>
+      <router-outlet>
+      </router-outlet>
+      <notifier-container></notifier-container>
+    </div>
+</div>
+
 

@@ -8,6 +8,7 @@ export class User {
     public  nom : string;
     public  prenom : string;
     public  email : string;
+    public  type : string;
     public  code_agent : string;
     public  num_tele : string;
     public  profileImageUrl : string;
@@ -29,6 +30,7 @@ export class User {
         this.prenom = '';
         this.username = '';
         this.email = '';
+        this.type = '';
         this.code_agent = '';
         this.num_tele = '';
         this.profileImageUrl = '';
