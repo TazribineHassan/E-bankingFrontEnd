@@ -1,0 +1,44 @@
+body {
+  margin-top: 20px;
+  background: #eee;
+}
+b{
+  text-transform: uppercase;
+  color: #fec107 !important;
+  font-weight: 700;
+}
+
+strong{
+  color: #666666;
+}
+
+.grid {
+  position: relative;
+  width: 100%;
+  background: #fff;
+  color: #666666;
+  border-radius: 2px;
+  margin-bottom: 25px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.grid .grid-body {
+  padding: 15px 20px 15px 20px;
+  font-size: 0.9em;
+  line-height: 1.9em;
+}
+
+.grid .full {
+  padding: 0 !important;
+}
+
+.grid.top.orange > .grid-header {
+  border-top-color: #f46100 !important;
+}
+
+
+
+
+
+
+
