@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HeaderType } from '../enum/header-type.enum';
 import { NotificationType } from '../enum/notification-type.enum';
+import { Role } from '../enum/roles.enum';
 import { User } from '../models/user';
 import { AuthenticationService } from '../services/authentication.service';
 import { NotificationService } from '../services/notification.service';
@@ -43,10 +44,10 @@ export class LoginComponent implements OnInit, OnDestroy {
           const token = response.headers.get(HeaderType.JWT_TOKEN);
           this.authenticationService.saveToken(token);
           this.authenticationService.addUserToLocalCache(response.body);
-          if(this.authenticationService.getUserFromLocalCache().roles == "ROLE_CLIENT"){
+          if(this.getUserRole() == Role.ROLE_CLIENT){
             this.router.navigateByUrl('/client');
           }
-          else if(this.authenticationService.getUserFromLocalCache().roles == "ROLE_AGENT"){
+          else if(this.getUserRole() == Role.ROLE_AGENT){
             this.router.navigateByUrl('/agent');
           }
           else{
@@ -60,6 +61,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
       )
     );
+  }
+
+  private getUserRole() : string {
+    return this.authenticationService.getUserFromLocalCache().roles;
   }
 
   private sendErrorNotification(notificationType: NotificationType, message: string): void{

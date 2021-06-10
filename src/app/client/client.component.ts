@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { NotificationType } from '../enum/notification-type.enum';
+import { Role } from '../enum/roles.enum';
 import { AuthenticationService } from '../services/authentication.service';
 import { NotificationService } from '../services/notification.service';
 
@@ -26,7 +27,7 @@ export class ClientComponent implements OnInit {
   }
  
   ngOnInit(): void { 
-    if(this.authenticationService.isLoggedIn() && this.authenticationService.getUserFromLocalCache().roles == "ROLE_CLIENT"){
+    if(this.authenticationService.isLoggedIn() && this.getUserRole() == Role.ROLE_CLIENT){
       this.router.navigateByUrl('/client');
     }
     else{
@@ -35,6 +36,10 @@ export class ClientComponent implements OnInit {
     }
   }
 
+  private getUserRole() : string {
+    return this.authenticationService.getUserFromLocalCache().roles;
+  }
+  
   subMenuState:boolean = false;
   burgerClicked(event: boolean){
     this.subMenuState = event;
