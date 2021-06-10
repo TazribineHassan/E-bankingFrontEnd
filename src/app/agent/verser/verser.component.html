@@ -1,30 +1,29 @@
-<div class="container-fluid">
+<div class="container-fluid ">
 
   <!-- DataTales Example -->
-  <div class="card shadow mb-4">
+  <div class="card shadow my-5">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">Effectuer un versement</h6>
 
     </div>
-    <div class="card-body">
-      <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-
+    <form #newTransactionForm="ngForm" class="form-horizontal"  (ngSubmit) = "onSaveNewTransaction(newTransactionForm)">
+      <div class="card-body">
         <div class="row">
           <div class="form-group col-sm-3">
             <label class="col-form-label" for="nom-input">De<span style="color: red">*</span></label>
           </div>
           <div class="form-group col-sm-4">
-            <input type="text" id="nom-input" name="nom-input" class="form-control" placeholder="Nom" required>
+            <input type="text" id="nom-input" ngModel #cinInput="ngModel" name="cin_verseur" class="form-control" placeholder="CIN" required>
           </div>
           <div class="form-group col-sm-5">
-            <input type="text" id="prenom-input" name="email-input" class="form-control" placeholder="Prenom" required >
+            <input type="text" id="nom-input" ngModel #nomInput="ngModel" name="nom_verseur" class="form-control" placeholder="Nom" required>
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="cin-input">Vers (beneficiare)<span style="color: red">*</span></label>
           <div class="col-md-9">
-            <input type="number" id="cin-input" name="compte-input" class="form-control" placeholder="N° du compte" required>
+            <input type="number" id="cin-input" ngModel #numCompteInput="ngModel" name="num_compte_beneficiaire" class="form-control" placeholder="N° du compte" required>
 
           </div>
         </div>
@@ -32,29 +31,23 @@
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="appendedInput">Montant</label>
           <div class="col-md-9 input-group">
-            <input id="appendedInput" class="form-control" size="16" type="text">
+            <input id="appendedInput" class="form-control" placeholder="1000" ngModel #montantInput="ngModel" name="montant" size="16" type="number" required>
             <div class="input-group-append">
               <span class="input-group-text">DH</span>
             </div>
           </div>
         </div>
-
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label" for="date-input">Date </label>
-            <div class="col-md-9">
-              <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date de naissance">
-            </div>
+        <!-- <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="date-input">Date </label>
+          <div class="col-md-9">
+            <input class="form-control" id="date-input" type="date" name="date_transaction" required>
           </div>
-
-
-
-      </form>
-
-    </div>
-    <div class="card-footer" style="text-align: center">
-      <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Effectuer</a>
-    </div>
-  </div>
-
+        </div> -->
+      </div>
+      <div class="card-footer" style="text-align: center">
+        <button  type="submit" [disabled]="newTransactionForm.invalid" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Effectuer</button>
+      </div>
+    </form>
+</div>
 </div>
 
