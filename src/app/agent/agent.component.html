@@ -68,40 +68,24 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-      <button class="rounded-circle border-0" id="sidebarToggle" (click)="toggleSideBar()"></button>
-    </div>
+    <
 
   </ul>
   <!-- End of Sidebar -->
   <div id="content-wrapper" class="d-flex flex-column">
-    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="justify-content: space-between;">
 
       <!-- Sidebar Toggle (Topbar) -->
-      <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3 " [hidden]="topbutton" (click)="toggleSideBar() ">
-        <i class="fa fa-bars"></i>
-      </button>
-      <button  class="btn btn-link rounded-circle d-md-none mr-3 " [hidden]="!topbutton" (click)="toggleSideBar() ">
+      <button class="btn btn-outline-info rounded-circle mr-3 indo" (click)="toggleSideBar() ">
         <i class="fa fa-bars"></i>
       </button>
       <!-- Topbar Search -->
-      <form
-        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-        <div class="input-group">
-          <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                 aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-              <i class="fas fa-search fa-sm"></i>
-            </button>
-          </div>
-        </div>
-      </form>
+      <div>
+        <div class="mr-5 btn btn-outline-info" *ngIf="titleAction$ | async as title"> {{title}} </div>
+        <button class="btn mr-2 ml-3 btn btn-outline-info" (click)="open(content)" ><i class="fas fa-sign-out-alt"></i></button>
 
+      </div>
       <!-- Topbar Navbar -->
-      <div class="mr-5 btn btn-outline-primary" *ngIf="titleAction$ | async as title"> {{title}} </div>
-      <button class="btn mr-2 ml-3 btn btn-outline-primary" (click)="open(content)" ><i class="fas fa-sign-out-alt"></i></button>
 
 
     </nav>
