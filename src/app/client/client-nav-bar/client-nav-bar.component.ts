@@ -1,4 +1,8 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Router } from '@angular/router';
+import { NotificationType } from 'src/app/enum/notification-type.enum';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import {ClientSideBarComponent} from "../client-side-bar/client-side-bar.component";
 
 @Component({
@@ -9,7 +13,7 @@ import {ClientSideBarComponent} from "../client-side-bar/client-side-bar.compone
 export class ClientNavBarComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService, private router: Router,  private notifier:NotificationService) { }
 
 
   @Output() menuState = new EventEmitter();
@@ -17,10 +21,16 @@ export class ClientNavBarComponent implements OnInit {
   opened: boolean | undefined;
   showMenu = false; /* false by default, since hidden */
   toggleMenu() {
-    //onsole.log("inside toggleMenu");
     this.showMenu = !this.showMenu;
     this.menuState.emit(this.showMenu);
   }
   ngOnInit(): void {
+  }
+
+  onLogout(){
+    this.authenticationService.logout();
+    document.getElementById("closeModal")?.click();
+    this.notifier.notify(NotificationType.SUCCESS, "You've been successfully logged out");
+    this.router.navigate(['/login']);
   }
 }

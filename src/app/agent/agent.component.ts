@@ -35,7 +35,15 @@ export class AgentComponent implements OnInit {
     else{
       this.notifier.notify(NotificationType.ERROR, "You don't have permission")
       this.router.navigateByUrl('/login');
+      
     }
+  }
+
+  onLogout(){
+    this.authenticationService.logout();
+    document.getElementById("closeModal")?.click();
+    this.router.navigate(['/login']);
+    this.notifier.notify(NotificationType.SUCCESS, "You've been successfully logged out")
   }
 
   toggleSideBar() {
