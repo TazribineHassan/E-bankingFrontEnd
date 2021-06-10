@@ -2,7 +2,7 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Ajouter un client</h6>
+      <h6 class="m-0 font-weight-bold text-info">Ajouter un client</h6>
 
     </div>
     <form #newClientForm="ngForm" class="form-horizontal" (ngSubmit) = "onSaveNewClient(newClientForm)">
@@ -47,7 +47,7 @@
         </div>
       </div>
       <div class="card-footer " style="text-align: center">
-        <button  type="submit" [disabled]="newClientForm.invalid" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">Envoyer</button>
+        <button  type="submit" [disabled]="newClientForm.invalid" class="d-sm-inline-block btn btn-sm btn-info shadow-sm">Envoyer</button>
       </div>
     </form>
   </div>
