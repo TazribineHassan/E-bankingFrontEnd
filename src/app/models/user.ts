@@ -1,6 +1,7 @@
 import { Agence } from "./agence";
 import { Banque } from "./banque";
 import { Compte } from "./compte";
+import { Transaction } from "./transaction";
 
 export class User {
     public  id : number;
@@ -22,6 +23,7 @@ export class User {
     public  notLocked : boolean;
     public agence : Agence;
     public compte : Compte;
+    public transactions : Transaction[];
 
     constructor() {
         this.id = 0;
@@ -39,6 +41,7 @@ export class User {
         this.joinDate = new Date();
         this.roles = '';
         this.authorities = [];
+        this.transactions = [];
         this.active = false;
         this.notLocked = false;
         this.agence = new Agence();

@@ -16,6 +16,7 @@ import { ClientVirerComponent } from './client/client-virer/client-virer.compone
 import { ClientHistVirmComponent } from './client/client-hist-virm/client-hist-virm.component';
 import { ClientHistVersComponent } from './client/client-hist-vers/client-hist-vers.component';
 import { ClientHistFactComponent } from './client/client-hist-fact/client-hist-fact.component';
+import { ClientPayerComponent } from './client/client-payer/client-payer.component';
 
 const routes: Routes = [
   { path: 'login', 
@@ -27,6 +28,7 @@ const routes: Routes = [
       { path: 'accueil', component: ClientAccuielComponent, },
       { path: 'profil', component: ClientProfilComponent},
       { path: 'virer', component: ClientVirerComponent},
+      { path: 'payer', component: ClientPayerComponent},
       { path: 'virements', component: ClientHistVirmComponent},
       { path: 'versements', component: ClientHistVersComponent},
       { path: 'Listfacturation', component: ClientHistFactComponent}
