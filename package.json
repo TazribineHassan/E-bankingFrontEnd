@@ -30,6 +30,7 @@
     "datatables.net-dt": "^1.10.25",
     "jquery": "^3.6.0",
     "rxjs": "~6.6.0",
+    "subsink": "^1.0.2",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
   },

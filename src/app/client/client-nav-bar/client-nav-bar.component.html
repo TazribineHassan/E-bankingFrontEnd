@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="dropdown-item" href="" data-toggle="modal" (click)="open(content)"><strong>Se déconnecter</strong></a>
+          <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal"><strong>Se déconnecter</strong></a>
         </li>
       </ul>
     </div>
@@ -29,7 +29,7 @@
       </div>
       <div class="modal-body">Etes vous sur de vouloir se deconnecter?</div>
       <div class="modal-footer">
-        <button type="button" class="btn bg-danger text-white ">Oui</button>
+        <button type="button" class="btn bg-danger text-white " (click)="onLogout()">Oui</button>
         <button type="button" class="btn btn-outline-dark " (click)="modal.close('Save click')">Non</button>
       </div>
 </ng-template>

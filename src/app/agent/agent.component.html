@@ -120,8 +120,8 @@
     Etes vous sur de vouloir se deconnecter?
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn bg-danger text-white ">Oui</button>
-    <button type="button" class="btn btn-outline-dark " (click)="modal.close('Save click')">Non</button>
+    <button type="button" class="btn bg-danger text-white" (click)="onLogout()">Oui</button>
+    <button type="button" class="btn btn-outline-dark " id="closeModal" (click)="modal.close('Save click')">Non</button>
   </div>
 </ng-template>
 

@@ -6,6 +6,7 @@ import { AuthenticationService } from '../services/authentication.service';
 import { NotificationService } from '../services/notification.service';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import { User } from '../models/user';
+import { Role } from '../enum/roles.enum';
 
 @Component({
   selector: 'app-agent',
@@ -27,14 +28,26 @@ export class AgentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.authenticationService.isLoggedIn() && this.authenticationService.getUserFromLocalCache().roles == "ROLE_AGENT"){
+    if(this.authenticationService.isLoggedIn() && this.getUserRole() == Role.ROLE_AGENT){
       this.userAgent = this.authenticationService.getUserFromLocalCache();
       this.router.navigateByUrl('/agent');
     }
     else{
       this.notifier.notify(NotificationType.ERROR, "You don't have permission")
       this.router.navigateByUrl('/login');
+      
     }
+  }
+
+  onLogout(){
+    this.authenticationService.logout();
+    document.getElementById("closeModal")?.click();
+    this.router.navigate(['/login']);
+    this.notifier.notify(NotificationType.SUCCESS, "You've been successfully logged out")
+  }
+
+  private getUserRole() : string {
+    return this.authenticationService.getUserFromLocalCache().roles;
   }
 
   toggleSideBar() {
@@ -43,4 +56,6 @@ export class AgentComponent implements OnInit {
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
+
+
 }
