@@ -14,6 +14,7 @@ import { SubSink } from 'subsink';
 export class DashbordComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
   public clientsNumber :number = 0;
+  public inactiveClientsNumber :number = 0;
   public transcationsNumber :number = 0;
   public agent: User = new User();
   constructor(private authenticationService: AuthenticationService, private userService: UserService,private transactionService : TransactionService) { }
@@ -30,6 +31,11 @@ export class DashbordComponent implements OnInit, OnDestroy {
       this.userService.getUsers().subscribe(
         (response : User[] | any) => {
           this.userService.addUsersToLacalCache(response);
+            for(const client of response) {
+              if(!client.active){
+                this.inactiveClientsNumber++;
+              }
+            }
             this.clientsNumber = response.length;
         }
       )
