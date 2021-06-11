@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { User } from 'src/app/models/user';
@@ -18,7 +19,7 @@ export class AjoutClientsComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
   optionValue: any;
   public agenceId: number = 0;
-  constructor(private userService: UserService, private notifier : NotificationService, private authenticationService: AuthenticationService) { }
+  constructor(private userService: UserService, private notifier : NotificationService, private authenticationService: AuthenticationService,  private modalService: NgbModal) { }
 
   onSaveNewClient(client : NgForm) : void{
     const formData = this.userService.createUserFormData(null, client.value)
@@ -27,8 +28,10 @@ export class AjoutClientsComponent implements OnInit, OnDestroy {
       (response : User | any) => {
         client.resetForm();
         this.sendNotification(NotificationType.SUCCESS, "Un nouveau client a été ajouté avec succès,un email a été envoyé au client");
+        document.getElementById("closeModal")?.click();
       },
       (errorResponse : HttpErrorResponse) => {
+        document.getElementById("closeModal")?.click();
         this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
       }
     ))
@@ -45,6 +48,11 @@ export class AjoutClientsComponent implements OnInit, OnDestroy {
       this.notifier.notify(notificationType, "An error occured. please try again");
     }
   }
+
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  }
+
   ngOnDestroy() : void {
     this.subs.unsubscribe();
   }
