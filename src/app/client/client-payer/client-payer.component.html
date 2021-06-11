@@ -15,10 +15,12 @@
               <div class="form">
                 <div class="inputfield">
                   <label>Code de facture</label>
-                  <input type="text" class="input">
+                  <form #facture_form="ngForm">
+                    <input type="number" ngModel name="facture_code" class="input"/>
+                  </form>
                 </div>
                 <div class="inputfield">
-                  <input type="submit" value="Payer" class="btn" (click)="open(content)">
+                  <input type="submit" value="Cherecher" (click)="ChercherClicked(facture_form.value)" class="btn">
                 </div>
               </div>
 
@@ -30,37 +32,77 @@
     </div>
 
   </div>
+
+  <div class="row container justify-content-center" *ngIf = "facture.montant !== 0">
+    <div class="col-sm-5">
+      <div class="grid">
+
+        <div class="grid-body">
+
+          <div class="tab-content">
+
+            <div class="tab-pane active" id="profile">
+              <p class="lead"><b>facture</b></p>
+              <hr>
+              <div class="form">
+
+                <div class="inputfield">
+                  <label>Code de facture : {{facture.code}}</label>
+                </div>
+
+                <div class="inputfield">
+                  <label>Montante de facture : {{facture.montant}}</label>
+                </div>
+
+                <div class="inputfield">
+                  <input type="submit" value="Valider" (click)="validerClicked()" class="btn btn-primary">
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="codeVerificationModal" tabindex="-1" role="dialog" aria-labelledby="codeVerificationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="codeVerificationModalLabel">Entrez le code de verefication</h5>
+        <button type="button" id="codeVerificationModalClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+          <label>Code de verefication</label>
+          <input type="number" [(ngModel)]="code_verefication" class="input" required>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="button" (click)="validerCodeClicked()" class="btn btn-primary">Valider</button>
+      </div>
+
+    </div>
+  </div>
 </div>
+
+<!-- Button trigger modal -->
+<button type="button" id="codeVerificationModalButton" style="visibility: hidden;" class="btn btn-primary" data-toggle="modal" data-target="#codeVerificationModal">
+</button>
+
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-</script> 
 
-
-<!-- model -->
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Payer</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label >Code de facture</label>
-        <div class="input-group">
-          <input id="#" class="form-control"  name="dp" >
-        </div>
-        <label>Montant</label>
-        <div class="input-group">
-          <input id="##" class="form-control" name="dp" >
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn" (click)="modal.close('Save click')">Confirmer</button>
-      </div>
-    </form>
-  </div>
-</ng-template> 
+</script>

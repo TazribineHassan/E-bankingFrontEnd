@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Facture } from '../models/facture';
 import { Transaction } from '../models/transaction';
 
 @Injectable({
@@ -23,6 +24,10 @@ export class ClientTransactionsService {
     return this.http.post<Transaction>(`${this.host}/client/virement/verify/` + code, null)
   }
 
+  searchPayment(code: string) : Observable<number | HttpErrorResponse>{
+    return this.http.get<number>(`${this.host}/client/payement/check/` + code)
+  }
+
   makePayement(formData: FormData) : Observable<Transaction | HttpErrorResponse>{
     return this.http.post<Transaction>(`${this.host}/client/payement/make`, formData)
   }
@@ -39,10 +44,10 @@ export class ClientTransactionsService {
     return formData;
   }
 
-  createPayementFormData(transaction:Transaction): FormData {
+  createPayementFormData(facture: Facture): FormData {
     const formData = new FormData();
-    formData.append('code_facture', transaction.code_facture);
-    formData.append('Montant_virement', transaction.montant + "");
+    formData.append('num_facture', facture.code);
+    formData.append('Montant_virement', facture.montant + "");
     return formData;
   }
 }
