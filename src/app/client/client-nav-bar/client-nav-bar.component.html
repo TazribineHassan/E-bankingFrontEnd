@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal"><strong>Se déconnecter</strong></a>
+          <button class=" btn btn-outline-warning" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-sign-out-alt"></i></button>
         </li>
       </ul>
     </div>
@@ -32,8 +32,8 @@
       </div>
       <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre session en cours .</div>
       <div class="modal-footer">
+        <button class="btn btn-primary" (click)="onLogout()">Déconnexion</button>
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Retour</button>
-        <a class="btn btn-primary" href="#login">Déconnexion</a>
       </div>
     </div>
   </div>

@@ -2,18 +2,21 @@
 <div id="wrapper">
 
   <!-- Sidebar -->
-  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" [hidden]="collapse" >
+  <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar" [hidden]="collapse" >
+
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-credit-card"></i>
+      </div>
       <div class="sidebar-brand-text mx-3"> {{userAgent?.agence?.banque?.nom}} </div>
     </a>
-    <hr class="sidebar-divider my-0"><br>
+    <hr class="sidebar-divider my-0">
     <div style="text-align: center;color: white">
-      <img src="assets/img/undraw_profile.svg" style="width: 160px; align-self: center;">
+      <img src="assets/img/undraw_profile.svg" style="align-self: center;margin: 10px;max-width: 60px;">
       <div> {{userAgent?.nom}} {{userAgent?.prenom}} </div>
-      <div>N° Agent: 
+      <div>N° Agent:
         {{userAgent?.code_agent}}
       </div>
     </div><br>
@@ -21,42 +24,42 @@
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-      <a class="nav-link" (click)="changeTitle('Tableau de bord')" routerLink="/agent">
+    <li class="nav-item" routerLink="/agent"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <a class="nav-link" (click)="changeTitle('Tableau de bord')">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Tableau de bord</span></a>
     </li>
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item ">
-      <a class="nav-link" (click)="changeTitle('Mon profil')" routerLink="./profil" >
+    <li class="nav-item " routerLink="./profil" routerLinkActive="active" >
+      <a class="nav-link" (click)="changeTitle('Mon profil')" >
         <i class="fas fa-user-circle"></i>
         <span>Mon profil</span></a>
     </li>
 
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed"  aria-expanded="true" (click)="changeTitle('Clients')" aria-controls="collapseTwo" routerLink="./clients">
+    <li class="nav-item" routerLink="./clients" routerLinkActive="active">
+      <a class="nav-link collapsed"  aria-expanded="true" (click)="changeTitle('Clients')" aria-controls="collapseTwo">
         <i class="fas fa-users"></i>
         <span>Clients</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed" (click)="changeTitle('Ajouter un client')" aria-expanded="true" aria-controls="collapseUtilities" routerLink="./add-client">
+    <li class="nav-item" routerLink="./add-client" routerLinkActive="active">
+      <a class="nav-link collapsed" (click)="changeTitle('Ajouter un client')" aria-expanded="true" aria-controls="collapseUtilities" >
         <i class="fas fa-user"></i>
         <span>Ajouter un client</span>
       </a>
     </li>
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed"  aria-expanded="true" (click)="changeTitle('Transactions')" routerLink="./transactions" aria-controls="collapseUtilities">
+    <li class="nav-item" routerLink="./transactions" routerLinkActive="active">
+      <a class="nav-link collapsed"  aria-expanded="true" (click)="changeTitle('Transactions')" aria-controls="collapseUtilities">
         <i class="fas fa-exchange-alt"></i>
         <span>Transactions</span>
       </a>
     </li>
 
-    <li class="nav-item">
-      <a class="nav-link collapsed"  aria-expanded="true" (click)="changeTitle('Effectuer un versement')" routerLink="./verse" aria-controls="collapseUtilities">
+    <li class="nav-item" routerLink="./verse" routerLinkActive="active">
+      <a class="nav-link collapsed"  aria-expanded="true" (click)="changeTitle('Effectuer un versement')" aria-controls="collapseUtilities">
         <i class="fas fa-long-arrow-alt-right"></i>
         <span>Effectuer un versement</span>
       </a>
@@ -65,40 +68,24 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-      <button class="rounded-circle border-0" id="sidebarToggle" (click)="toggleSideBar()"></button>
-    </div>
+    <
 
   </ul>
   <!-- End of Sidebar -->
   <div id="content-wrapper" class="d-flex flex-column">
-    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="justify-content: space-between;">
 
       <!-- Sidebar Toggle (Topbar) -->
-      <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3 " [hidden]="topbutton" (click)="toggleSideBar() ">
-        <i class="fa fa-bars"></i>
-      </button>
-      <button  class="btn btn-link rounded-circle d-md-none mr-3 " [hidden]="!topbutton" (click)="toggleSideBar() ">
+      <button class="btn btn-info  mr-3 indo" (click)="toggleSideBar() ">
         <i class="fa fa-bars"></i>
       </button>
       <!-- Topbar Search -->
-      <form
-        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-        <div class="input-group">
-          <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                 aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-              <i class="fas fa-search fa-sm"></i>
-            </button>
-          </div>
-        </div>
-      </form>
+      <div>
+        <div class="mr-5 btn btn-outline-info" *ngIf="titleAction$ | async as title"> {{title}} </div>
+        <button class="btn mr-2 ml-3 btn btn-outline-info" (click)="open(content)" ><i class="fas fa-sign-out-alt"></i></button>
 
+      </div>
       <!-- Topbar Navbar -->
-      <div class="mr-5 btn btn-outline-primary" *ngIf="titleAction$ | async as title"> {{title}} </div>
-      <button class="btn mr-2 ml-3 btn btn-outline-primary" (click)="open(content)" ><i class="fas fa-sign-out-alt"></i></button>
 
 
     </nav>
@@ -134,8 +121,8 @@
     Etes vous sur de vouloir se deconnecter?
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn bg-danger text-white ">Oui</button>
-    <button type="button" class="btn btn-outline-dark " (click)="modal.close('Save click')">Non</button>
+    <button type="button" class="btn bg-danger text-white" (click)="onLogout()">Oui</button>
+    <button type="button" class="btn btn-outline-dark " id="closeModal" (click)="modal.close('Save click')">Non</button>
   </div>
 </ng-template>
 

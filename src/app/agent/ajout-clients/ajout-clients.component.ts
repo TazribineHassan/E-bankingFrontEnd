@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { NotificationType } from 'src/app/enum/notification-type.enum';
@@ -7,21 +7,22 @@ import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from 'src/app/services/user.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-ajout-clients',
   templateUrl: './ajout-clients.component.html',
   styleUrls: ['./ajout-clients.component.css']
 })
-export class AjoutClientsComponent implements OnInit {
+export class AjoutClientsComponent implements OnInit, OnDestroy {
+  private subs = new SubSink();
   optionValue: any;
   public agenceId: number = 0;
-  private subscriptions : Subscription[] = [];
   constructor(private userService: UserService, private notifier : NotificationService, private authenticationService: AuthenticationService) { }
 
   onSaveNewClient(client : NgForm) : void{
     const formData = this.userService.createUserFormData(null, client.value)
-    this.subscriptions.push(
+    this.subs.add(
     this.userService.addUser(formData).subscribe(
       (response : User | any) => {
         client.resetForm();
@@ -43,5 +44,8 @@ export class AjoutClientsComponent implements OnInit {
     }else{
       this.notifier.notify(notificationType, "An error occured. please try again");
     }
+  }
+  ngOnDestroy() : void {
+    this.subs.unsubscribe();
   }
 }
