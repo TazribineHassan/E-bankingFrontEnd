@@ -2,6 +2,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SubSink } from 'subsink';
 import { HeaderType } from '../enum/header-type.enum';
 import { NotificationType } from '../enum/notification-type.enum';
 import { Role } from '../enum/roles.enum';
@@ -15,8 +16,8 @@ import { NotificationService } from '../services/notification.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, OnDestroy {
+  private subs = new SubSink();
   public  showLoading: boolean = false;
-  private subscriptions : Subscription[] = [];
 
   constructor(private router: Router, private authenticationService: AuthenticationService, private notifier: NotificationService) { }
 
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onLogin(user:User): void{
     this.showLoading = true;
-    this.subscriptions.push(this.authenticationService.login(user).subscribe(
+    this.subs.add(this.authenticationService.login(user).subscribe(
       (response : HttpResponse<User> | any) =>{
           const token = response.headers.get(HeaderType.JWT_TOKEN);
           this.authenticationService.saveToken(token);
@@ -76,7 +77,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() : void {
-    this.subscriptions.forEach(sub => sub.unsubscribe());
+    this.subs.unsubscribe();
   }
 
 

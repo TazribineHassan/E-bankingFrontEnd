@@ -1,20 +1,19 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { Transaction } from 'src/app/models/transaction';
 import { NotificationService } from 'src/app/services/notification.service';
 import { TransactionService } from 'src/app/services/transaction.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-verser',
   templateUrl: './verser.component.html',
   styleUrls: ['./verser.component.css']
 })
-export class VerserComponent implements OnInit {
-
-  private subscriptions : Subscription[] = [];
+export class VerserComponent implements OnInit, OnDestroy {
+  private subs = new SubSink();
   
   constructor(private transactionService: TransactionService, private notifier : NotificationService) { }
 
@@ -24,7 +23,7 @@ export class VerserComponent implements OnInit {
   onSaveNewTransaction(transaction: NgForm) :void{
     const formData = this.transactionService.createUserFormData(transaction.value);
     console.log(transaction.value);
-    this.subscriptions.push(
+    this.subs.add(
       this.transactionService.makeTransaction(formData).subscribe(
         (response : Transaction | any) => {
           transaction.resetForm();
@@ -45,5 +44,9 @@ export class VerserComponent implements OnInit {
     }else{
       this.notifier.notify(notificationType, "An error occured. please try again");
     }
+  }
+
+  ngOnDestroy() : void {
+    this.subs.unsubscribe();
   }
 }
