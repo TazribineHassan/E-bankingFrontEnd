@@ -18,7 +18,7 @@
               <th>Montant</th>
               </thead>
               <tbody *ngFor = "let transaction of transactions">
-                <tr>
+                <tr *ngIf = "transaction?.type_transaction === 'payment'">
                   <td data-label="N°">1</td>
                   <td data-label="Date"> {{transaction.date_transaction}} </td>
                   <td data-label="Bénificiaire"> {{transaction.num_compte_beneficiaire}} </td>

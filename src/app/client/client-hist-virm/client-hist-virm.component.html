@@ -17,7 +17,7 @@
                 </thead>
                 <tbody *ngFor = "let transaction of transactions">
 
-                <tr>
+                <tr *ngIf = "transaction?.type_transaction === 'virement'">
                   <td data-label="N°">{{transaction.id}}</td>
                   <td data-label="Date"> {{transaction.date_transaction}} </td>
                   <td data-label="Bénificiaire"> {{transaction.num_compte_beneficiaire}} </td>
