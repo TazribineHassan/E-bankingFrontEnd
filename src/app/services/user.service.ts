@@ -26,8 +26,8 @@ export class UserService {
     return this.http.put<User>(`${this.host}/agent/client/update`, formData);
   }
  
-  restPassword(email: string): Observable<CustomHttpResponse | HttpErrorResponse>{
-    return this.http.get<CustomHttpResponse>(`${this.host}/user/resetpassword/${email}`);
+  restPassword(form: FormData): Observable<boolean | HttpErrorResponse>{
+    return this.http.put<boolean>(`${this.host}/user/resetpassword`, form);
   }
 
   blockUserAccount(userId:number): Observable<CustomHttpResponse | HttpErrorResponse> {
@@ -58,4 +58,13 @@ export class UserService {
     formData.append('id_agence', JSON.stringify(this.authenticationService.getUserFromLocalCache().agence.id));
     return formData;
   }
+
+
+  createResetPasswordFormData(obj: any): FormData {
+    const formData = new FormData();
+    formData.append('old_password', obj.old_password);
+    formData.append('new_password', obj.new_password );
+    return formData;
+  }
+
 }

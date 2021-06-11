@@ -19,7 +19,7 @@
               </thead>
               <tbody *ngFor = "let transaction of transactions">
                 <tr *ngIf = "transaction?.type_transaction === 'payement'">
-                  <td data-label="N°">1</td>
+                  <td data-label="N°"> {{transaction?.id}} </td>
                   <td data-label="Date"> {{transaction.date_transaction}} </td>
                   <td data-label="Bénificiaire"> {{transaction.code_facture}} </td>
                   <td data-label="Montant"> {{transaction.montant_facture}} </td>

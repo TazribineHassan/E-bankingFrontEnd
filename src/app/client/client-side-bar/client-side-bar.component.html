@@ -1,6 +1,6 @@
 <nav id="sidebar" [hidden]="showMenu" >
   <div class="p-4 pt-5">
-    <div class="title"><h1><a routerLink="accueil" ><strong>E-Client</strong></a></h1></div><br><br>
+    <div class="title"><h3><a routerLink="accueil" ><strong>{{client?.nom}} {{client?.prenom}}</strong></a></h3></div><br><br>
     <ul class="list-unstyled components mb-5">
       <li routerLink="accueil" routerLinkActive="active">
         <a >Mon compte</a>

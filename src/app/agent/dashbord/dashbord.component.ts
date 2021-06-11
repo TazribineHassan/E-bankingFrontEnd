@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Transaction } from 'src/app/models/transaction';
 import { User } from 'src/app/models/user';
@@ -21,7 +22,16 @@ export class DashbordComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // this.solde_banque = this.authenticationService.getUserFromLocalCache().agence.banque.solde;
-    this.agent = this.authenticationService.getUserFromLocalCache();
+    this.subs.add(
+      this.authenticationService.getCurrentUser().subscribe(
+        (response: User | any) => {
+          this.agent = response;
+        },
+        (errorResponse: HttpErrorResponse) => {
+          
+        }
+      )
+    );
     this.getNumberOFClients();
     this.getNumberOfTransactions();
   }

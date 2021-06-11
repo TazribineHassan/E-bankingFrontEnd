@@ -31,12 +31,45 @@
 
             </div>
             <!-- END PROFILE -->
+
           </div>
         </div>
       </div>
     </div>
     <!-- END USER PROFILE -->
   </div>
+  <div class="row container justify-content-center mt-3">
+      <div class="col-sm-8">
+        <!-- form card change password -->
+        <div class="card">
+          <div class="card-header">
+              <h4 class="mb-0">Changer le mot de passe</h4>
+          </div>
+          <div class="card-body">
+              <form class="form" role="form" #passwordResetForm="ngForm" (submit)="onPasswordResetFormSubmit(passwordResetForm)" autocomplete="off">
+                  <div class="form-group">
+                      <label for="old_password">Mot de passe actuel</label>
+                      <input type="password" ngModel #old_password="ngModel" name="old_password" class="form-control" id="old_password" required>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="new_password">Nouveau mot de passe</label>
+                      <input type="password" ngModel #new_password="ngModel" name="new_password" class="form-control" id="new_password" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="new_password_verify">Confirmer le Nouveau mot de passe</label>
+                      <input type="password" ngModel #new_password_verify="ngModel" name="new_password_verify" class="form-control" id="new_password_verify" required>
+                      
+                  </div>
+                  <div class="form-group">
+                      <button type="submit" [disabled]="passwordResetForm.invalid" class="btn btn-success btn-lg float-right">Enregistrer</button>
+                  </div>
+              </form>
+          </div>
+          <!-- /form card change password -->
+        </div>
+      </div>
+   </div>
 </div>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
