@@ -24,6 +24,7 @@ import { ClientHistVirmComponent } from './client/client-hist-virm/client-hist-v
 import { ClientHistVersComponent } from './client/client-hist-vers/client-hist-vers.component';
 import { ClientHistFactComponent } from './client/client-hist-fact/client-hist-fact.component';
 import { ClientPayerComponent } from './client/client-payer/client-payer.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { ClientPayerComponent } from './client/client-payer/client-payer.compone
     FormsModule,
     BrowserAnimationsModule,
     AgentModule,
+    NgbModule,
   ],
   providers: [AuthenticationGuard, NotificationService, AuthenticationService, UserService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
   bootstrap: [AppComponent],

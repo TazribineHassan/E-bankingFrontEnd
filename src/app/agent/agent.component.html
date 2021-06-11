@@ -2,7 +2,7 @@
 <div id="wrapper">
 
   <!-- Sidebar -->
-  <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar" [hidden]="collapse" >
+  <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark " [hidden]="collapse" >
 
 
     <!-- Sidebar - Brand -->
@@ -24,7 +24,7 @@
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item" routerLink="/agent"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+    <li class="nav-item" routerLink="/agent"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >
       <a class="nav-link" (click)="changeTitle('Tableau de bord')">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Tableau de bord</span></a>
@@ -68,7 +68,6 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <
 
   </ul>
   <!-- End of Sidebar -->
@@ -76,7 +75,7 @@
     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="justify-content: space-between;">
 
       <!-- Sidebar Toggle (Topbar) -->
-      <button class="btn btn-info  mr-3 indo" (click)="toggleSideBar() ">
+      <button class="btn btn-outline-info rounded-circle mr-3 " (click)="toggleSideBar() ">
         <i class="fa fa-bars"></i>
       </button>
         <div class="btn btn-outline-info" *ngIf="titleAction$ | async as title"> {{title}} </div>

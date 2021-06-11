@@ -4,6 +4,7 @@ import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import {ClientSideBarComponent} from "../client-side-bar/client-side-bar.component";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-client-nav-bar',
@@ -13,7 +14,8 @@ import {ClientSideBarComponent} from "../client-side-bar/client-side-bar.compone
 export class ClientNavBarComponent implements OnInit {
 
 
-  constructor(private authenticationService: AuthenticationService, private router: Router,  private notifier:NotificationService) { }
+
+  constructor(private authenticationService: AuthenticationService, private router: Router,  private notifier:NotificationService,private modalService: NgbModal) { }
 
 
   @Output() menuState = new EventEmitter();
@@ -23,6 +25,9 @@ export class ClientNavBarComponent implements OnInit {
   toggleMenu() {
     this.showMenu = !this.showMenu;
     this.menuState.emit(this.showMenu);
+  }
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
   ngOnInit(): void {
   }

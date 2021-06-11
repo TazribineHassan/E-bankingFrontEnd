@@ -3,3 +3,6 @@ strong{
   color: #fec107 !important;
   font-weight: 700;
 }
+.dropdown-item.active, .dropdown-item:active {
+  background-color: initial;
+}
