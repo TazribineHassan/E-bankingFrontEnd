@@ -48,7 +48,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     FormsModule,
     BrowserAnimationsModule,
     AgentModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [AuthenticationGuard, NotificationService, AuthenticationService, UserService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
   bootstrap: [AppComponent],

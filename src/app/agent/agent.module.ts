@@ -8,7 +8,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { AjoutClientsComponent } from './ajout-clients/ajout-clients.component';
 import { VerserComponent } from './verser/verser.component';
 import {DataTablesModule} from "angular-datatables";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { ProfilComponent } from './profil/profil.component';
 
@@ -29,7 +29,8 @@ import { ProfilComponent } from './profil/profil.component';
     RouterModule,
     DataTablesModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ]
 })
 export class AgentModule { }

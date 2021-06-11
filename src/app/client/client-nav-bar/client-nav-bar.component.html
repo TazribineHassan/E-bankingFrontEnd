@@ -5,17 +5,8 @@
       <span class="sr-only" ></span>
     </button>
 
-    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fa fa-bars"></i>
-    </button>
+    <button class="btn mr-2 ml-3 btn btn-primary" (click)="open(content)" ><i class="fas fa-sign-out-alt"></i></button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal"><strong>Se déconnecter</strong></a>
-        </li>
-      </ul>
-    </div>
   </div>
 </nav>
 
@@ -23,13 +14,13 @@
 <ng-template #content let-modal>
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Prêt de sortir?</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <button class="close" type="button" aria-label="Close" (click)="modal.dismiss('Cross click')">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body">Etes vous sur de vouloir se deconnecter?</div>
       <div class="modal-footer">
         <button type="button" class="btn bg-danger text-white " (click)="onLogout()">Oui</button>
-        <button type="button" class="btn btn-outline-dark " (click)="modal.close('Save click')">Non</button>
+        <button type="button" class="btn btn-outline-dark " id="closeModal" (click)="modal.close('Save click')">Non</button>
       </div>
 </ng-template>
