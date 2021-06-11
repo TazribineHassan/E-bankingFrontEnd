@@ -14,19 +14,20 @@
               <p class="lead"><b>Transfert de fonds</b></p>
               <hr>
               <div class="form">
-                <div class="inputfield">
-                  <label>N° de compte de bénificiaire</label>
-                  <input type="text" class="input">
-                </div>
-                <div class="inputfield">
-                  <label>Le montant à virer</label>
-                  <input type="number" class="input">
-                </div>
-                <div class="inputfield">
-                  <input type="submit" value="Valider" class="btn">
-                </div>
+                <form #newVirementForm = "ngForm" (ngSubmit) = "onSaveNewVirement(newVirementForm)" >
+                  <div class="inputfield">
+                    <label>N° de compte de bénificiaire</label>
+                    <input type="text" ngModel #num_compte_beneficiaire="ngModel" name="num_compte_beneficiaire" class="input" required>
+                  </div>
+                  <div class="inputfield">
+                    <label>Le montant à virer</label>
+                    <input type="number" ngModel #montant = "ngModel" name="montant" class="input" required>
+                  </div>
+                  <div class="inputfield">
+                    <input type="submit" [disabled]="newVirementForm.invalid" value="Valider" class="btn">
+                  </div>
+                </form>
               </div>
-
             </div>
             <!-- END PROFILE -->
           </div>
@@ -36,6 +37,39 @@
     <!-- END USER PROFILE -->
   </div>
 </div>
+
+
+<!-- Button trigger modal -->
+<button type="button" id="codeVerificationModalButton" style="visibility: hidden;" class="btn btn-primary" data-toggle="modal" data-target="#codeVerificationModal">
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="codeVerificationModal" tabindex="-1" role="dialog" aria-labelledby="codeVerificationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="codeVerificationModalLabel">Entrez le code de verefication</h5>
+        <button type="button" id="codeVerificationModalClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+          <label>Code de verefication</label>
+          <input type="number" [(ngModel)]="code_verefication" class="input" required>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="button" (click)="validerClicked()" class="btn btn-primary">Valider</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">

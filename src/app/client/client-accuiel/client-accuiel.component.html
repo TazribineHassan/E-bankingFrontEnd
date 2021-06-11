@@ -20,7 +20,7 @@
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
               Facturation</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">500Dhs</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{client?.transactions?.length}}</div>
           </div>
           <div class="col-auto">
             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -38,7 +38,7 @@
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
               Solde</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">10000Dhs</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{client?.compte?.solde}}Dhs</div>
           </div>
           <div class="col-auto">
             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -56,7 +56,7 @@
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Virement
             </div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{client?.transactions?.length}}</div>
           </div>
           <div class="col-auto">
             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -74,7 +74,7 @@
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
               Versement</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{client?.transactions?.length}}</div>
           </div>
           <div class="col-auto">
             <i class="fas fa-comments fa-2x text-gray-300"></i>
