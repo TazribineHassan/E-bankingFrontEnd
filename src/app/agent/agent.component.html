@@ -2,7 +2,7 @@
 <div id="wrapper">
 
   <!-- Sidebar -->
-  <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar" [hidden]="collapse" >
+  <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark " [hidden]="collapse" >
 
 
     <!-- Sidebar - Brand -->
@@ -20,12 +20,11 @@
         {{userAgent?.code_agent}}
       </div>
     </div><br>
->>>>>>>>> Temporary merge branch 2
     <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item" routerLink="/agent"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+    <li class="nav-item" routerLink="/agent"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >
       <a class="nav-link" (click)="changeTitle('Tableau de bord')">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Tableau de bord</span></a>

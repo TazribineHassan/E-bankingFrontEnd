@@ -23,6 +23,7 @@ import { ClientVirerComponent } from './client/client-virer/client-virer.compone
 import { ClientHistVirmComponent } from './client/client-hist-virm/client-hist-virm.component';
 import { ClientHistVersComponent } from './client/client-hist-vers/client-hist-vers.component';
 import { ClientHistFactComponent } from './client/client-hist-fact/client-hist-fact.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { ClientHistFactComponent } from './client/client-hist-fact/client-hist-f
     FormsModule,
     BrowserAnimationsModule,
     AgentModule,
+    NgbModule
   ],
   providers: [AuthenticationGuard, NotificationService, AuthenticationService, UserService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
   bootstrap: [AppComponent],
