@@ -20,7 +20,7 @@
                 <tr *ngIf = "transaction?.type_transaction === 'payement'">
                   <td data-label="Date"> {{transaction.date_transaction}} </td>
                   <td data-label="Bénificiaire"> {{transaction.code_facture}} </td>
-                  <td data-label="Montant"> {{transaction.montant_facture}} </td>
+                  <td data-label="Montant" class="text-danger"> -{{transaction.montant_facture}} </td>
                 </tr>
               </tbody>
             </table>

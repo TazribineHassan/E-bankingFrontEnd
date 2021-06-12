@@ -19,7 +19,7 @@
                 <tr *ngIf = "transaction?.type_transaction === 'virement'">
                   <td data-label="Date"> {{transaction.date_transaction}} </td>
                   <td data-label="Bénificiaire"> {{transaction.num_compte_beneficiaire}} </td>
-                  <td data-label="Montant"> {{transaction.montant}} </td>
+                  <td data-label="Montant" class="text-danger">-{{transaction.montant}} </td>
                 </tr>
 
                 </tbody>

@@ -26,7 +26,6 @@ export class ClientHistVirmComponent implements OnInit, OnDestroy {
       this.clientTansactionsService.getTransactions().subscribe(
         (response : Transaction[] | any) => {
           this.transactions = response;
-          this.sendNotification(NotificationType.SUCCESS, `${response.length} transactions loaded successfuly.`);
         },
         (errorResponse : HttpErrorResponse) => {
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
