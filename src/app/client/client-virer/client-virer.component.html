@@ -11,7 +11,7 @@
           <div class="tab-content">
 
             <div class="tab-pane active" id="profile">
-              <p class="lead"><b>Transfert de fonds</b></p>
+              <p class="lead"><b class="text-info">Transfert de fonds</b></p>
               <hr>
               <div class="form">
                 <form #newVirementForm = "ngForm" (ngSubmit) = "onSaveNewVirement(newVirementForm)" >
@@ -23,8 +23,8 @@
                     <label>Le montant à virer</label>
                     <input type="number" ngModel #montant = "ngModel" name="montant" class="input" required>
                   </div>
-                  <div class="inputfield">
-                    <input type="submit" [disabled]="newVirementForm.invalid" value="Valider" class="btn">
+                  <div class="inputfield justify-content-center">
+                    <input type="submit" [disabled]="newVirementForm.invalid" value="Valider" class="btn btn-info ">
                   </div>
                 </form>
               </div>
@@ -49,20 +49,20 @@
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 class="modal-title" id="codeVerificationModalLabel">Entrez le code de verefication</h5>
+        <h5 class="modal-title" id="codeVerificationModalLabel">Entrez le code de verification</h5>
         <button type="button" id="codeVerificationModalClose" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       <div class="modal-body">
-          <label>Code de verefication</label>
+          <label>Code de verification</label>
           <input type="number" [(ngModel)]="code_verefication" class="input" required>
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" (click)="validerClicked()" class="btn btn-primary">Valider</button>
+        <button type="button" (click)="validerClicked()" class="btn btn-info">Valider</button>
       </div>
 
     </div>
