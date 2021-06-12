@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { Transaction } from 'src/app/models/transaction';
@@ -18,7 +19,9 @@ export class ClientVirerComponent implements OnInit, OnDestroy {
   public static nombreTransaction: number = 0;
   public code_verefication : number = 0;
   private subscriptions : Subscription[] = [];
-  constructor(private clientTansactionsService : ClientTransactionsService, private notifier: NotificationService) { }
+  constructor(private clientTansactionsService : ClientTransactionsService, 
+              private notifier: NotificationService,
+              private modalService: NgbModal) { }
 
   onSaveNewVirement(transaction: NgForm) :void{
 
@@ -33,17 +36,20 @@ export class ClientVirerComponent implements OnInit, OnDestroy {
           document.getElementById("codeVerificationModalButton")?.click();
           transaction.resetForm();
           this.sendNotification(NotificationType.SUCCESS, "Un code de verefication a ete envoyee a votre email")
-        
+          document.getElementById("closeModal")?.click();
         },
         (errorResponse : HttpErrorResponse) => {
           console.log("error teeeeeest " + errorResponse);
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          document.getElementById("closeModal")?.click();
         }
       )
     )
   }
   
-  
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  }
 
   ngOnInit(): void {
     
@@ -67,15 +73,18 @@ export class ClientVirerComponent implements OnInit, OnDestroy {
         (response : Transaction | any) => {
 
           console.log(response);
-          // close the modal button
+          // close the code validation button
           document.getElementById("codeVerificationModalClose")?.click();
           this.code_verefication =0;
           this.sendNotification(NotificationType.SUCCESS, "Le virement s'est bien passée")
-        
+          //close the loading modal
+          document.getElementById("closeModal")?.click();
         },
         (errorResponse : HttpErrorResponse) => {
-          // close the modal button
+          // close the code validation button
           document.getElementById("codeVerificationModalClose")?.click();
+          //close the loading modal
+          document.getElementById("closeModal")?.click();
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
         }
       )

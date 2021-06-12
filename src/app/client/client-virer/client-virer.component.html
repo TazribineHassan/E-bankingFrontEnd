@@ -24,7 +24,7 @@
                     <input type="number" ngModel #montant = "ngModel" name="montant" class="input" required>
                   </div>
                   <div class="inputfield">
-                    <input type="submit" [disabled]="newVirementForm.invalid" value="Valider" class="btn">
+                    <input type="submit" [disabled]="newVirementForm.invalid" (click)=open(content) value="Valider" class="btn">
                   </div>
                 </form>
               </div>
@@ -62,12 +62,25 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" (click)="validerClicked()" class="btn btn-primary">Valider</button>
+        <button type="button" (click)="validerClicked();open(content)" class="btn btn-primary">Valider</button>
       </div>
 
     </div>
   </div>
 </div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">S'il vous plaît, attendez</h4>
+  </div>
+  <div class="modal-body text-center text-success">
+    <i class="fas fa-spinner fa-spin"></i>
+  </div>
+  <div class="modal-footer">
+    <button type="button" hidden class="btn btn-outline-dark " id="closeModal" (click)="modal.close('Save click')">Non</button>
+  </div>
+</ng-template>
 
 
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>

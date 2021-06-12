@@ -62,7 +62,7 @@
                       
                   </div>
                   <div class="form-group">
-                      <button type="submit" [disabled]="passwordResetForm.invalid" class="btn btn-success btn-lg float-right">Enregistrer</button>
+                      <button type="submit" [disabled]="passwordResetForm.invalid" (click)="open(content)" class="btn btn-success btn-lg float-right">Enregistrer</button>
                   </div>
               </form>
           </div>
@@ -76,3 +76,18 @@
 <script type="text/javascript">
 
 </script>
+
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">S'il vous plaît, attendez</h4>
+  </div>
+  <div class="modal-body text-center text-success">
+    <i class="fas fa-spinner fa-spin"></i>
+  </div>
+  <div class="modal-footer">
+    <button type="button" hidden class="btn btn-outline-dark " id="closeModal" (click)="modal.close('Save click')">Non</button>
+  </div>
+</ng-template>
+

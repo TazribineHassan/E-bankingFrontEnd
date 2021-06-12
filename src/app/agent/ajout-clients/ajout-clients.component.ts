@@ -19,7 +19,10 @@ export class AjoutClientsComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
   optionValue: any;
   public agenceId: number = 0;
-  constructor(private userService: UserService, private notifier : NotificationService, private authenticationService: AuthenticationService,  private modalService: NgbModal) { }
+  constructor(private userService: UserService, 
+              private notifier : NotificationService, 
+              private authenticationService: AuthenticationService, 
+              private modalService: NgbModal) { }
 
   onSaveNewClient(client : NgForm) : void{
     const formData = this.userService.createUserFormData(null, client.value)

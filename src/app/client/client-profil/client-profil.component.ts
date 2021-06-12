@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -19,7 +20,10 @@ export class ClientProfilComponent implements OnInit {
   public new_password_verify: string = '';
   public new_password: string = '';
 
-  constructor(private authenticationService: AuthenticationService, private userService: UserService, private notifier: NotificationService) { }
+  constructor(private authenticationService: AuthenticationService, 
+              private userService: UserService, 
+              private notifier: NotificationService,
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.client = this.authenticationService.getUserFromLocalCache();
@@ -30,31 +34,37 @@ export class ClientProfilComponent implements OnInit {
     //password validation
     if(form.value.new_password !== form.value.new_password_verify){
       this.sendNotification(NotificationType.ERROR, "Le mot de passe et la confirmation ne sont pas identique")
+      document.getElementById("closeModal")?.click();
       return;
     }
 
     if(form.value.new_password.length < 8){
       this.sendNotification(NotificationType.ERROR, "Le nouveau mot de passe doit etre compose de 8 charactere minimum")
+      document.getElementById("closeModal")?.click();
       return;
     }
-
-
+    
     const passwordResetFormData: FormData = this.userService.createResetPasswordFormData(form.value);
     console.log(passwordResetFormData);
     this.userService.restPassword(passwordResetFormData).subscribe(
       (response : any) => {
 
         console.log(response);
+        document.getElementById("closeModal")?.click();
         form.resetForm();
         this.sendNotification(NotificationType.SUCCESS, "Le mot de passe a ete changer avec succes")
-      
       },
       (errorResponse : HttpErrorResponse) => {
         console.log("error teeeeeest " + errorResponse);
+        document.getElementById("closeModal")?.click();
         form.resetForm();
         this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
       }
     )
+  }
+
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
 
   private sendNotification(notificationType: NotificationType, message: string): void{
