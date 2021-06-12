@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { Transaction } from 'src/app/models/transaction';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -15,7 +16,7 @@ import { SubSink } from 'subsink';
 export class VerserComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
   
-  constructor(private transactionService: TransactionService, private notifier : NotificationService) { }
+  constructor(private transactionService: TransactionService, private notifier : NotificationService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -28,15 +29,19 @@ export class VerserComponent implements OnInit, OnDestroy {
         (response : Transaction | any) => {
           transaction.resetForm();
           this.sendNotification(NotificationType.SUCCESS, "La transaction s'est bien passée")
+          document.getElementById("closeModal")?.click();
         },
         (errorResponse : HttpErrorResponse) => {
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          document.getElementById("closeModal")?.click();
         }
       )
     )
   }
   
-  
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  }
   
   private sendNotification(notificationType: NotificationType, message: string): void{
     if(message){

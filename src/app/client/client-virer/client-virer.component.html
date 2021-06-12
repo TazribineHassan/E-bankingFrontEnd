@@ -24,7 +24,7 @@
                     <input type="number" ngModel #montant = "ngModel" name="montant" class="input" required>
                   </div>
                   <div class="inputfield justify-content-center">
-                    <input type="submit" [disabled]="newVirementForm.invalid" value="Valider" class="btn btn-info ">
+                    <input type="submit" [disabled]="newVirementForm.invalid" (click)=open(content)  value="Valider" class="btn btn-info ">
                   </div>
                 </form>
               </div>
@@ -62,7 +62,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" (click)="validerClicked()" class="btn btn-info">Valider</button>
+        <button type="button" (click)="validerClicked();open(content)" class="btn btn-info">Valider</button>
       </div>
 
     </div>

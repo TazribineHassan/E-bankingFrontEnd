@@ -1,4 +1,6 @@
 import {Component, OnInit, Input, OnChanges } from '@angular/core';
+import { User } from 'src/app/models/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import {ClientNavBarComponent} from "../client-nav-bar/client-nav-bar.component";
 
 
@@ -9,13 +11,19 @@ import {ClientNavBarComponent} from "../client-nav-bar/client-nav-bar.component"
 })
 export class ClientSideBarComponent implements OnInit, OnChanges {
   @Input() subMenuState: boolean | undefined;
-  constructor() { }
+
+  public client: User = new User();
+  constructor(private authenticationService: AuthenticationService) { }
+
+
   opened: boolean | undefined;
   showMenu: undefined | boolean = false;
   toggleMenu() {
     this.showMenu = !this.showMenu;
   }
+
   ngOnInit() {
+    this.client = this.authenticationService.getUserFromLocalCache();
   }
 
   ngOnChanges(){

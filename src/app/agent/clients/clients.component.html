@@ -18,25 +18,24 @@
         </div>
       </form>
       <br>
-      <div class="table-responsive">
-        <table datatable class="table table-sm  table-bordered table-hover my-custom-scrollbar table-wrapper-scroll-y" cellspacing="0">
+      <div class="my-custom-scrollbar table-wrapper-scroll-y">
+        <table datatable class="table table-sm  table-bordered table-hover" cellspacing="0">
           <thead>
-          <th>Nom</th>
-          <th>CIN</th>
-          <th>Telephone</th>
-          <th>Email</th>
-          <th>N° de compte</th>
-          <th>Solde</th>
-          <th>Status</th>
-          <th>Actions</th>
+            <th>CIN</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Telephone</th>
+            <th>N° de compte</th>
+            <th>Solde</th>
+            <th>Status</th>
+            <th>Actions</th>
           </thead>
-
           <tbody *ngFor = "let user of users" id="myTable">
             <tr >
-              <td> {{user?.nom}} </td>
               <td> {{user?.cin}} </td>
+              <td> {{user?.nom}} </td>
+              <td> {{user?.prenom}} </td>
               <td> {{user?.num_tele}} </td>
-              <td> {{user?.email}} </td>
               <td> {{user?.compte?.numCompte}} </td>
               <td> {{user?.compte?.solde}} </td>
               <td>

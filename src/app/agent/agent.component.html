@@ -78,15 +78,10 @@
       <button class="btn btn-outline-info rounded-circle mr-3 " (click)="toggleSideBar() ">
         <i class="fa fa-bars"></i>
       </button>
-      <!-- Topbar Search -->
-      <div>
-        <div class="mr-5 btn btn-outline-info" *ngIf="titleAction$ | async as title"> {{title}} </div>
-        <button class="btn mr-2 ml-3 btn btn-outline-info" (click)="open(content)" ><i class="fas fa-sign-out-alt"></i></button>
-
-      </div>
-      <!-- Topbar Navbar -->
-
-
+        <div class="btn btn-outline-info" *ngIf="titleAction$ | async as title"> {{title}} </div>
+        <button class="btn btn-info" (click)="open(content)" >
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
     </nav>
 
   <router-outlet>

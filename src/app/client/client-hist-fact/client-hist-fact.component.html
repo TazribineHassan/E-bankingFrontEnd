@@ -12,17 +12,15 @@
           <div class="tab-content">
             <table class="table">
               <thead>
-              <th>N°</th>
               <th>Date</th>
               <th>Code de facture</th>
               <th>Montant</th>
               </thead>
               <tbody *ngFor = "let transaction of transactions">
-                <tr>
-                  <td data-label="N°">1</td>
+                <tr *ngIf = "transaction?.type_transaction === 'payement'">
                   <td data-label="Date"> {{transaction.date_transaction}} </td>
-                  <td data-label="Bénificiaire"> {{transaction.num_compte_beneficiaire}} </td>
-                  <td data-label="Montant"> {{transaction.montant}} </td>
+                  <td data-label="Bénificiaire"> {{transaction.code_facture}} </td>
+                  <td data-label="Montant"> {{transaction.montant_facture}} </td>
                 </tr>
               </tbody>
             </table>

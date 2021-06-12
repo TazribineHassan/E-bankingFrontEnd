@@ -64,4 +64,8 @@ export class AuthenticationService {
     }
   }
 
+  getCurrentUser(): Observable<User | HttpErrorResponse>{
+      return this.http.get<User>(`${this.host}/user/current/dtails`);
+  }
+
 }
