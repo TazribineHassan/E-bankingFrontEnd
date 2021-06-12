@@ -24,7 +24,7 @@
                     <input type="number" ngModel #montant = "ngModel" name="montant" class="input" required>
                   </div>
                   <div class="inputfield justify-content-center">
-                    <input type="submit" [disabled]="newVirementForm.invalid" (click)=open(content)  value="Valider" class="btn btn-info ">
+                    <input type="submit" [disabled]="newVirementForm.invalid" (click)="open(content)"  value="Valider" class="btn btn-info ">
                   </div>
                 </form>
               </div>
@@ -68,6 +68,18 @@
     </div>
   </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">S'il vous plaît, attendez</h4>
+  </div>
+  <div class="modal-body text-center text-success">
+    <i class="fas fa-spinner fa-spin"></i>
+  </div>
+  <div class="modal-footer">
+    <button type="button" hidden class="btn btn-outline-dark " id="closeModal" (click)="modal.close('Save click')">Non</button>
+  </div>
+</ng-template>
 
 
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>

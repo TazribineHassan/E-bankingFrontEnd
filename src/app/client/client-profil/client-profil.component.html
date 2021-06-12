@@ -42,8 +42,8 @@
       <div class="col-sm-8">
         <!-- form card change password -->
         <div class="card">
-          <div class="card-header">
-              <h4 class="mb-0">Changer le mot de passe</h4>
+          <div class="card-header bg-info ">
+              <h4 class="mb-0 text-white">Changer le mot de passe</h4>
           </div>
           <div class="card-body">
               <form class="form" role="form" #passwordResetForm="ngForm" (submit)="onPasswordResetFormSubmit(passwordResetForm)" autocomplete="off">
@@ -62,7 +62,7 @@
                       
                   </div>
                   <div class="form-group">
-                      <button type="submit" [disabled]="passwordResetForm.invalid" (click)="open(content)" class="btn btn-success btn-lg float-right">Enregistrer</button>
+                      <button type="submit" [disabled]="passwordResetForm.invalid" (click)="open(content)" class="btn btn-info btn-lg float-right">Enregistrer</button>
                   </div>
               </form>
           </div>
