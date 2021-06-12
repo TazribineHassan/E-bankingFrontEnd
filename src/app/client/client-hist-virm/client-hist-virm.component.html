@@ -10,7 +10,6 @@
           <div class="tab-content">
               <table class="table">
                 <thead>
-                <th>N°</th>
                 <th>Date</th>
                 <th>Bénificiaire</th>
                 <th>Montant</th>
@@ -18,7 +17,6 @@
                 <tbody *ngFor = "let transaction of transactions">
 
                 <tr *ngIf = "transaction?.type_transaction === 'virement'">
-                  <td data-label="N°">{{transaction.id}}</td>
                   <td data-label="Date"> {{transaction.date_transaction}} </td>
                   <td data-label="Bénificiaire"> {{transaction.num_compte_beneficiaire}} </td>
                   <td data-label="Montant"> {{transaction.montant}} </td>
