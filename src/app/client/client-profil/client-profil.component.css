@@ -4,7 +4,6 @@ body {
 }
 b{
   text-transform: uppercase;
-  color: #fec107 !important;
   font-weight: 700;
 }
 
@@ -30,10 +29,6 @@ strong{
 
 .grid .full {
   padding: 0 !important;
-}
-
-.grid.top.orange > .grid-header {
-  border-top-color: #f46100 !important;
 }
 
 

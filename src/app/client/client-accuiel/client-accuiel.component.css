@@ -1,16 +1,10 @@
 b{
   text-transform: uppercase;
-  color: #fec107 !important;
   font-weight: 700;
 }
 body {
   margin-top: 20px;
   background: #eee;
-}
-b{
-  text-transform: uppercase;
-  color: #fec107 !important;
-  font-weight: 700;
 }
 
 strong{
@@ -38,5 +32,5 @@ strong{
 }
 
 .grid.top.orange > .grid-header {
-  border-top-color: #f46100 !important;
+  border-top-color: #17a2b8 !important;
 }

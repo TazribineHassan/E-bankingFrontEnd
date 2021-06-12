@@ -1,6 +1,6 @@
 <nav id="sidebar" [hidden]="showMenu" >
   <div class="p-4 pt-5">
-    <div class="title"><h3><a routerLink="accueil" ><strong>{{client?.nom}} {{client?.prenom}}</strong></a></h3></div><br><br>
+    <div class="title text-info"><h3><a routerLink="accueil" ><strong class="text-info">{{client?.nom}} {{client?.prenom}}</strong></a></h3></div><br><br>
     <ul class="list-unstyled components mb-5">
       <li routerLink="accueil" routerLinkActive="active">
         <a >Mon compte</a>
@@ -27,7 +27,7 @@
 
     <div class="footer">
       <p>
-        Copyright &copy;<script> document.write(new Date().getFullYear().toString());</script> Tous les droits sont réservés  | Programmé par  <i class="icon-heart" aria-hidden="true"></i><strong>4GINF</strong>
+        Copyright &copy;<script> document.write(new Date().getFullYear().toString());</script> Tous les droits sont réservés  | Programmé par  <i class="icon-heart" aria-hidden="true"></i><strong class="text-info">4GINF</strong>
       </p>
     </div>
   </div>
